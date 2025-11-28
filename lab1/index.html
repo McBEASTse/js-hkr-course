@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="Lab 1 - Marcus Pettersson" />
+
+    <title>Marcus Pettersson - Digital kommunikatör</title>
+    <meta name="title" content="Lab 1 - Marcus Pettersson" />
+
+    <link rel="preload" href="css/main.css" as="style" />
+    <link
+      rel="preload"
+      href="fonts/roboto-v30-latin-700.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/roboto-v30-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/roboto-v30-latin-900.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="img/marcus-pettersson-photo-1000.webp"
+      as="image"
+      media="(min-width: 38rem)"
+    />
+    <link
+      rel="preload"
+      href="img/marcus-pettersson-photo-1000-mobile.webp"
+      as="image"
+      media="(max-width: 38rem)"
+    />
+
+    <link rel="preload" src="img/icons.svg" as="image" />
+    <link rel="preload" href="scripts/menu-button.js" as="script" />
+    <link rel="preload" href="scripts/top-button.js" as="script" />
+
+    <link rel="stylesheet" href="css/main.css" />
+
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+  </head>
+
+  <body>
+    <header
+      class="flex flex-row flex-justify-content-center relative width-100"
+    >
+      <div
+        class="container flex flex-row flex-space-between flex-align-items-center"
+      >
+        <a
+          href="/"
+          class="flex flex-row flex-align-items-center full-logo"
+          aria-label="To the start page"
+        >
+          <img
+            src="img/marcus-pettersson-photo-200.webp"
+            class="img-logo header-logo"
+            alt="Small photo of Marcus"
+          />
+          <p>Marcus Pettersson</p>
+        </a>
+        <ul class="nav-list">
+          <li>Page 1</li>
+          <li>Page 2</li>
+          <li>Page 3</li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="container" aria-label="Main content">
+        <div class="content-wrapper">
+          <div class="grid-intro-text">
+            <h1>Marcus Pettersson</h1>
+            <h2 class="subheading">Just a person</h2>
+          </div>
+
+          <div class="grid-intro-image intro-image">
+            <!-- Multiple image sizes for different screens and optimization. -->
+            <picture>
+              <source
+                srcset="img/marcus-pettersson-photo-1000.webp"
+                media="(min-width: 38rem)"
+              />
+              <source srcset="img/marcus-pettersson-photo-1000-mobile.webp" />
+              <img
+                src="img/marcus-pettersson-photo-1000.webp"
+                alt="A portrait photo of Marcus Pettersson"
+              />
+            </picture>
+          </div>
+
+          <div class="grid-intro-text">
+            <div class="start-info">
+              <p>I'm Marcus. The more I learn, the less I know.</p>
+              <p>It's just that simple.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <button
+        id="top-button"
+        class="to-top-button to-top-button-hidden"
+        title="Till sidtoppen"
+        aria-label="Knapp för att hoppa till sidtoppen"
+      >
+        <span></span>
+      </button>
+    </main>
+
+    <footer aria-label="Sidfot">
+      <div class="container">
+        <a href="/" aria-label="Till startsidan">
+          <img
+            src="img/logo.webp"
+            class="img-logo footer-logo"
+            alt="Marcus Petterssons logotyp"
+          />
+        </a>
+      </div>
+    </footer>
+
+    <script src="scripts/menu-button.js"></script>
+    <script src="scripts/top-button.js"></script>
+  </body>
+</html>

@@ -9,22 +9,22 @@
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" sizes="16x16" />
   </head>
   <body>
-    <header class="navigation_header">
-      <div class="container">
+    <header>
+      <div class="container nav-container">
         <a
           href="/"
-          class="logo_container logo_link"
+          class="flex flex-row flex-align-items-center gap-4 logo-link"
           aria-label="To the start page"
         >
           <img
             src="img/logo.webp"
-            class="img_logo header_logo outline-black"
+            class="img-logo header-logo outline-black"
             alt="Small photo of Marcus"
           />
-          <p class="logo_text">Marcus Pettersson</p>
+          <p class="logo-text">Marcus Pettersson</p>
         </a>
         <nav>
-          <ul class="nav-buttons">
+          <ul class="flex flex-row nav-buttons gap-4">
             <li>
               <a href="about.html" target="_top">About me</a>
             </li>
@@ -35,34 +35,51 @@
         </nav>
       </div>
     </header>
-    <main>
-      <section class="section_container">
-        <div class="section_base standard_section">
-          <section class="flex_even">
-            <h1>Professional Person</h1>
-            <section
-              class="ingress"
-              aria-label="Presentation text about Marcus"
-            >
-              <p>
-                I am Marcus and I'm a professional doing professional things in
-                a professional way. My LinkedIn is boosted and full of thoughts.
-              </p>
-              <p>You'd love to hear more about me, so contact me.</p>
-            </section>
-          </section>
-          <section class="flex_even center_all">
-            <img
-              src="img/marcus-pettersson-photo-1000.webp"
-              alt="Portrait photo of Marcus Pettersson, professional"
-              class="portrait_photo"
-            />
+    <main class="flex flex-column gap-16">
+      <section class="flex flex-row flex-justify-content-center">
+        <div class="width-100 flex flex-row pi-20 gap-8">
+          <h1>About me</h1>
+        </div>
+      </section>
+      <section class="flex flex-row flex-justify-content-center">
+        <div class="width-100 flex flex-row pi-20 gap-8">
+          <section class="flex flex-column gap-4">
+            <h2>My super-long life</h2>
+            <p>
+              I've been lucky to live a long happy life. I remember that when I
+              was a kid I wanted to live a long happy life.
+            </p>
+            <p>And here I am.</p>
           </section>
         </div>
       </section>
-      <section class="section_container">
-        <div class="section_base colored_section grey-bg">
-          <div class="flex_even skill_contact_sections">
+      <section class="flex flex-row flex-justify-content-center">
+        <div class="width-100 flex flex-row pi-20 gap-8">
+          <section class="flex flex-column gap-4">
+            <h2>My interests</h2>
+            <p>
+              I like to play pinball, I'm learning programming, I enjoy building
+              Lego and be with my wife and kids.
+            </p>
+            <p>I also enjoy reading books and comics.</p>
+          </section>
+        </div>
+      </section>
+      <section class="flex flex-row flex-justify-content-center">
+        <div class="width-100 flex flex-row pi-20 gap-8">
+          <section class="flex flex-column gap-4 flex-even">
+            <h2>My future goals</h2>
+            <p>Never stop learning and never stop being curious.</p>
+            <p>
+              Seriously, learning new things and skills is the most fun you can
+              do.
+            </p>
+          </section>
+        </div>
+      </section>
+      <section class="flex flex-row flex-justify-content-center">
+        <div class="flex flex-row width-100 colored-bg-padding grey-bg gap-8">
+          <div class="flex flex-even flex-column gap-4" id="skills-listing">
             <h2>Why me?</h2>
             <p>
               I have skills. Lot's of them. Best skills. They say, Marcus, you
@@ -70,61 +87,65 @@
               say.
             </p>
             <h3>Skills listing</h3>
-            <ul class="column_listing">
-              <li class="skill_listing">
-                <span class="skill_text">HTML</span>
-                <span class="skill_rating treefiddy"></span>
+            <ul class="flex flex-column gap-4">
+              <li class="flex flex-row gap-4 skill-listing">
+                <span class="skill-text flex-justify-content-end">HTML</span>
+                <span class="skill-rating treefiddy"></span>
               </li>
-              <li class="skill_listing">
-                <span class="skill_text">CSS</span>
-                <span class="skill_rating twenquan"></span>
+              <li class="flex flex-row gap-4 skill-listing">
+                <span class="skill-text">CSS</span>
+                <span class="skill-rating twenquan"></span>
               </li>
-              <li class="skill_listing">
-                <span class="skill_text">JavaScript</span>
-                <span class="skill_rating twcha"></span>
+              <li class="flex flex-row gap-4 skill-listing">
+                <span class="skill-text">JavaScript</span>
+                <span class="skill-rating twcha"></span>
               </li>
-              <li class="skill_listing">
-                <span class="skill_text">Neovim</span>
-                <span class="skill_rating denwuo"></span>
+              <li class="flex flex-row gap-4 skill-listing">
+                <span class="skill-text">Neovim</span>
+                <span class="skill-rating denwuo"></span>
               </li>
-              <li class="skill_listing">
-                <span class="skill_text">Linux</span>
-                <span class="skill_rating twcha"></span>
+              <li class="flex flex-row gap-4 skill-listing">
+                <span class="skill-text">Linux</span>
+                <span class="skill-rating twcha"></span>
               </li>
             </ul>
           </div>
-          <div class="flex_even skill_contact_sections" id="contact_form">
+          <div class="flex flex-even flex-column gap-4" id="contact-form">
             <h2>Contact form</h2>
-            <form class="column_listing" action="/submit-form" method="POST">
-              <div class="form_container flex_even">
-                <label class="textarea_label" for="name">Your name</label>
+            <form
+              class="flex flex-column gap-4"
+              action="/submit-form"
+              method="POST"
+            >
+              <div class="flex flex-column flex-even">
+                <label class="textarea-label" for="name">Your name</label>
                 <input
-                  class="input_field input_field_information"
+                  class="input-field input-field-information"
                   type="text"
                   id="name"
-                  name="senders_name"
+                  name="senders-name"
                   required
                 />
               </div>
-              <div class="form_container flex_even">
-                <label class="textarea_label" for="email">Your email</label>
+              <div class="flex flex-column flex-even">
+                <label class="textarea-label" for="email">Your email</label>
                 <input
-                  class="input_field input_field_information"
+                  class="input-field input-field-information"
                   type="email"
                   id="email"
-                  name="senders_email"
+                  name="senders-email"
                   required
                 />
               </div>
-              <div class="form_container flex_even">
-                <label class="textarea_label" for="content">
+              <div class="flex flex-column flex-even">
+                <label class="textarea-label" for="content">
                   What you want
                 </label>
-                <div class="textarea_wrapper">
+                <div class="textarea-wrapper">
                   <textarea
-                    class="input_field"
+                    class="input-field"
                     id="content"
-                    name="message_content"
+                    name="message-content"
                     rows="3"
                     required
                   ></textarea>

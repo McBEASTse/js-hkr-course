@@ -9,60 +9,141 @@
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" sizes="16x16" />
   </head>
   <body>
-    <header class="navigation_header">
-      <div class="container">
-        <a
-          href="/"
-          class="logo_container logo_link"
-          aria-label="To the start page"
-        >
-          <img
-            src="img/logo.webp"
-            class="img_logo header_logo outline-black"
-            alt="Small photo of Marcus"
-          />
-          <p class="logo_text">Marcus Pettersson</p>
-        </a>
+    <header class="flex flex-row flex-justify-content-center relative">
+      <div
+        class="container flex flex-row flex-space-between flex-align-items-center"
+      >
+        <div>
+          <a
+            href="/"
+            class="flex flex-row flex-align-items-center gap-4 logo-link"
+            aria-label="To the start page"
+          >
+            <img
+              src="img/logo.webp"
+              class="img-logo header-logo outline-black"
+              alt="Small photo of Marcus"
+            />
+            <p class="logo-text">Marcus Pettersson</p>
+          </a>
+        </div>
         <nav>
-          <ul class="nav-buttons">
+          <ul class="flex flex-row flex-wrap nav-buttons gap-4">
             <li>
               <a href="about.html" target="_top">About me</a>
             </li>
             <li><a href="projects.html" target="_top">Projects</a></li>
-            <li><a href="#" target="_top">Skills</a></li>
+            <li><a href="#skills-listing" target="_top">Skills</a></li>
             <li><a href="#contact-form" target="_top">Contact</a></li>
           </ul>
         </nav>
       </div>
     </header>
-    <main>
-      <section class="section_container">
-        <div class="section_base standard_section">
-          <section class="flex_even">
-            <h1>Professional Person</h1>
-            <section
-              class="ingress"
-              aria-label="Presentation text about Marcus"
-            >
-              <p>
-                I am Marcus and I'm a professional doing professional things in
-                a professional way. My LinkedIn is boosted and full of thoughts.
-              </p>
-              <p>You'd love to hear more about me, so contact me.</p>
-            </section>
+    <main class="flex flex-column gap-16">
+      <section class="flex flex-row flex-justify-content-center">
+        <div class="width-100 flex flex-row pi-20 gap-8">
+          <h1>Projects</h1>
+        </div>
+      </section>
+      <section class="flex flex-row flex-justify-content-center">
+        <div class="width-100 flex flex-row pi-20 gap-8">
+          <section class="flex flex-column gap-4 flex-even">
+            <h2>Region Stockholm</h2>
+            <p>
+              I februari 2024 lanserade Region Stockholm sin nya webb&shy;plats
+              som är byggd från grunden med fokus på invånarnas behov. Jag var
+              med i den senare delen av projektet där jag fokuserade på UX,
+              till&shy;gänglighet, innehåll och testning.
+            </p>
+            <p>
+              Den nya webb&shy;platsen rankas bland topp fem bland
+              region&shy;webbar och uppfyller alla svenska lag&shy;krav för
+              digital till&shy;gänglighet samt nästan alla krav för WCAG
+              AAA-nivå.
+            </p>
+            <p>
+              <a
+                class="url"
+                href="https://www.regionstockholm.se/"
+                target="_top"
+                aria-label="Vidare till Region Stockholms webbsida"
+              >
+                Besök Region Stockholms webbsida
+              </a>
+            </p>
           </section>
-          <section class="flex_even center_all">
+          <section
+            class="flex flex-even flex-align-content-center flex-justify-content-center"
+          >
             <img
-              src="img/marcus-pettersson-photo-1000.webp"
-              alt="Portrait photo of Marcus Pettersson, professional"
-              class="portrait_photo"
+              class="image-border image-border-radius"
+              src="img/region-stockholm-web-1400.webp"
+              alt="Skärmklipp från Region Stockholms webbsida."
             />
           </section>
         </div>
       </section>
-      <section class="section_container">
-        <div class="section_base colored_section grey-bg">
-          <div class="flex_even skill_contact_sections">
+      <section class="flex flex-row flex-justify-content-center">
+        <div class="width-100 flex flex-row pi-20 gap-8">
+          <section class="flex flex-column gap-4 flex-even">
+            <h2>Inspektionen för vård och omsorg</h2>
+            <p>
+              Under min tid på Inspektionen för vård och omsorg (IVO) var jag
+              med i skapandet av IVO:s nya webb&shy;sida som lanserades sommaren
+              2023. Målet var att göra det enkelt för besökare att hitta
+              relevant information och navigera på webb&shy;platsen.
+            </p>
+            <p>
+              Jag stöttade design&shy;arbetet, testade och rättade buggar,
+              bearbetade texter och var med i produktionssättningen av
+              webbsidan.
+            </p>
+            <p>
+              <a
+                class="url"
+                href="https://www.ivo.se/"
+                target="_top"
+                aria-label="Vidare till IVO:s webbsida"
+              >
+                Besök Inspektionen för vård och omsorgs webbsida
+              </a>
+            </p>
+          </section>
+          <section
+            class="flex flex-even flex-align-content-center flex-justify-content-center"
+          >
+            <img
+              class="image-border image-border-radius"
+              src="img/ivo-webb-1000.webp"
+              alt="Skärmklipp från Region Stockholms webbsida."
+            />
+          </section>
+        </div>
+      </section>
+      <section class="flex flex-row flex-justify-content-center">
+        <div class="width-100 flex flex-row pi-20 gap-8">
+          <section class="flex flex-column gap-4 flex-even">
+            <h2>Linköpings universitet</h2>
+            <p>
+              Under sommaren 2012 skapade jag en mural&shy;målning åt Linköpings
+              universitet som finns att skåda i ett välbesökt lunch&shy;rum på
+              Campus Linköping.
+            </p>
+          </section>
+          <section
+            class="flex flex-even flex-align-content-center flex-justify-content-center"
+          >
+            <img
+              class="image-border image-border-radius"
+              src="img/liu-01-1000.webp"
+              alt="Skärmklipp från Region Stockholms webbsida."
+            />
+          </section>
+        </div>
+      </section>
+      <section class="flex flex-row flex-justify-content-center">
+        <div class="flex flex-row width-100 colored-bg-padding grey-bg gap-8">
+          <div class="flex flex-even flex-column gap-4" id="skills-listing">
             <h2>Why me?</h2>
             <p>
               I have skills. Lot's of them. Best skills. They say, Marcus, you
@@ -70,61 +151,65 @@
               say.
             </p>
             <h3>Skills listing</h3>
-            <ul class="column_listing">
-              <li class="skill_listing">
-                <span class="skill_text">HTML</span>
-                <span class="skill_rating treefiddy"></span>
+            <ul class="flex flex-column gap-4">
+              <li class="flex flex-row gap-4 skill-listing">
+                <span class="skill-text flex-justify-content-end">HTML</span>
+                <span class="skill-rating treefiddy"></span>
               </li>
-              <li class="skill_listing">
-                <span class="skill_text">CSS</span>
-                <span class="skill_rating twenquan"></span>
+              <li class="flex flex-row gap-4 skill-listing">
+                <span class="skill-text">CSS</span>
+                <span class="skill-rating twenquan"></span>
               </li>
-              <li class="skill_listing">
-                <span class="skill_text">JavaScript</span>
-                <span class="skill_rating twcha"></span>
+              <li class="flex flex-row gap-4 skill-listing">
+                <span class="skill-text">JavaScript</span>
+                <span class="skill-rating twcha"></span>
               </li>
-              <li class="skill_listing">
-                <span class="skill_text">Neovim</span>
-                <span class="skill_rating denwuo"></span>
+              <li class="flex flex-row gap-4 skill-listing">
+                <span class="skill-text">Neovim</span>
+                <span class="skill-rating denwuo"></span>
               </li>
-              <li class="skill_listing">
-                <span class="skill_text">Linux</span>
-                <span class="skill_rating twcha"></span>
+              <li class="flex flex-row gap-4 skill-listing">
+                <span class="skill-text">Linux</span>
+                <span class="skill-rating twcha"></span>
               </li>
             </ul>
           </div>
-          <div class="flex_even skill_contact_sections" id="contact_form">
+          <div class="flex flex-even flex-column gap-4" id="contact-form">
             <h2>Contact form</h2>
-            <form class="column_listing" action="/submit-form" method="POST">
-              <div class="form_container flex_even">
-                <label class="textarea_label" for="name">Your name</label>
+            <form
+              class="flex flex-column gap-4"
+              action="/submit-form"
+              method="POST"
+            >
+              <div class="flex flex-column flex-even">
+                <label class="textarea-label" for="name">Your name</label>
                 <input
-                  class="input_field input_field_information"
+                  class="input-field input-field-information"
                   type="text"
                   id="name"
-                  name="senders_name"
+                  name="senders-name"
                   required
                 />
               </div>
-              <div class="form_container flex_even">
-                <label class="textarea_label" for="email">Your email</label>
+              <div class="flex flex-column flex-even">
+                <label class="textarea-label" for="email">Your email</label>
                 <input
-                  class="input_field input_field_information"
+                  class="input-field input-field-information"
                   type="email"
                   id="email"
-                  name="senders_email"
+                  name="senders-email"
                   required
                 />
               </div>
-              <div class="form_container flex_even">
-                <label class="textarea_label" for="content">
+              <div class="flex flex-column flex-even">
+                <label class="textarea-label" for="content">
                   What you want
                 </label>
-                <div class="textarea_wrapper">
+                <div class="textarea-wrapper">
                   <textarea
-                    class="input_field"
+                    class="input-field"
                     id="content"
-                    name="message_content"
+                    name="message-content"
                     rows="3"
                     required
                   ></textarea>

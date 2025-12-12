@@ -9,7 +9,7 @@
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" sizes="16x16" />
   </head>
   <body>
-    <header class="navigation_header">
+    <header class="header_container">
       <div class="container">
         <a
           href="/"
@@ -24,20 +24,20 @@
           <p class="logo_text">Marcus Pettersson</p>
         </a>
         <nav>
-          <ul class="nav-buttons">
+          <ul class="nav_buttons">
             <li>
               <a href="about.html" target="_top">About me</a>
             </li>
             <li><a href="projects.html" target="_top">Projects</a></li>
-            <li><a href="#" target="_top">Skills</a></li>
-            <li><a href="#contact-form" target="_top">Contact</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact_form">Contact</a></li>
           </ul>
         </nav>
       </div>
     </header>
-    <main>
+    <main class="main_container">
       <section class="section_container">
-        <div class="section_base standard_section">
+        <div class="section_base intro_section standard_section">
           <section class="flex_even">
             <h1>Professional Person</h1>
             <section
@@ -61,8 +61,8 @@
         </div>
       </section>
       <section class="section_container">
-        <div class="section_base colored_section grey-bg">
-          <div class="flex_even skill_contact_sections">
+        <div class="section_base row_section colored_section grey_bg">
+          <div class="flex_even skill_contact_sections" id="skills">
             <h2>Why me?</h2>
             <p>
               I have skills. Lot's of them. Best skills. They say, Marcus, you
@@ -131,105 +131,89 @@
                 </div>
               </div>
             </form>
-            <button
-              class="relative flex flex-row flex-justify-content-center flex-align-items-center large-button"
-              type="submit"
-            >
-              Send Message
-            </button>
+            <button class="large_button" type="submit">Send Message</button>
           </div>
         </div>
       </section>
     </main>
-    <footer>
-      <div class="flex flex-row flex-justify-content-center">
-        <section class="container flex flex-column gap-16">
-          <div class="grid-wrapper grid-footer gap-6">
-            <div class="grid-column-1">
-              <h2>Contact</h2>
-              <ul>
-                <li><a href="tel:0705570785">Call me: 070-55 70 785</a></li>
-                <li>
-                  <a href="mailto:marcus.pettersson0651@stud.hkr.se">
-                    marcus.pettersson0651@stud.hkr.se
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="grid-column-2">
-              <h2>Social media</h2>
-              <ul>
-                <li>
-                  <a
-                    class="flex flex-row flex-wrap gap-3 social-links"
-                    href="https://www.facebook.com/"
-                  >
-                    <span>
-                      <svg
-                        width="28"
-                        height="28"
-                        viewBox="0 0 30 30"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M18.67 28.48h-6v-9.43H11.4c-.77 0-1.4-.61-1.4-1.36V15.2c0-.75.63-1.36 1.4-1.36h1.27v-3.26c0-2.7 2.24-4.88 5-4.88h3.6c.77 0 1.4.61 1.4 1.37v3.12c0 .76-.63 1.37-1.4 1.37h-2.6v2.28h2.5c.43 0 .82.18 1.08.49.27.31.38.73.3 1.13l-.51 2.48a1.4 1.4 0 0 1-1.37 1.09h-2v9.45Zm-4-1.95h2V17.1h3.52l.26-1.3h-3.77v-4.82c0-.75.63-1.36 1.4-1.36h2.6V7.67h-3.01c-1.66 0-3 1.3-3 2.92v5.2H12v1.3h2.67v9.44ZM19 28.48h-8c-7.24 0-10.33-3-10.33-10.08v-7.8C.67 3.52 3.77.5 11 .5h8c7.24 0 10.33 3.03 10.33 10.1v7.8c0 7.07-3.09 10.09-10.33 10.09ZM11 2.46c-6.14 0-8.33 2.13-8.33 8.13v7.81c0 6 2.19 8.13 8.33 8.13h8c6.15 0 8.34-2.13 8.34-8.13v-7.8c0-6-2.2-8.14-8.34-8.14h-8Z"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span>Facebook</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    class="flex flex-row flex-wrap gap-3 social-links"
-                    href="https://www.instagram.com/"
-                  >
-                    <span>
-                      <svg
-                        width="28"
-                        height="28"
-                        viewBox="0 0 30 30"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M19 29.75h-8C3.76 29.75.67 26.63.67 19.34v-8.06C.67 3.98 3.77.87 11 .87h8c7.24 0 10.33 3.11 10.33 10.4v8.07c0 7.29-3.09 10.4-10.33 10.4ZM11 2.88c-6.14 0-8.33 2.2-8.33 8.4v8.06c0 6.19 2.19 8.39 8.33 8.39h8c6.15 0 8.34-2.2 8.34-8.4v-8.05c0-6.2-2.2-8.4-8.34-8.4h-8ZM15 21.01A5.7 5.7 0 0 1 15 9.6 5.7 5.7 0 0 1 15 21Zm0-9.4a3.68 3.68 0 0 0-3.66 3.7A3.67 3.67 0 0 0 15 19a3.68 3.68 0 0 0 3.67-3.7A3.68 3.68 0 0 0 15 11.61Zm6.67-2.35a1.3 1.3 0 0 1-.5-.1 1.54 1.54 0 0 1-.45-.29 1.6 1.6 0 0 1-.3-.44 1.33 1.33 0 0 1-.08-.51c0-.18.02-.35.09-.51.08-.18.17-.31.3-.45.06-.05.13-.12.2-.16a1 1 0 0 1 .23-.12.8.8 0 0 1 .26-.08c.42-.1.88.05 1.2.36a1.44 1.44 0 0 1 .38.95c0 .18-.04.36-.1.52-.07.16-.16.3-.28.44-.14.12-.28.21-.44.28a1.3 1.3 0 0 1-.51.11Z"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span>Instagram</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    class="flex flex-row flex-wrap gap-3 social-links"
-                    href="https://www.linkedin.com/"
-                  >
-                    <span>
-                      <svg
-                        width="28"
-                        height="28"
-                        viewBox="0 0 30 30"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M19 .87h-8C3.77.87.67 3.98.67 11.28v8.06c0 7.29 3.09 10.41 10.33 10.41h8c7.24-.01 10.33-3.12 10.33-10.41v-8.07C29.33 3.98 26.24.87 19 .87Zm-2.89 26.86v-5.45c0-1.44.29-2.83 2.17-2.83s1.88 1.64 1.88 2.92v5.33c-.37.02-.76.03-1.17.03H16.1Zm11.23-8.4c0 4.19-1.01 6.55-3.55 7.64v-5.28c0-2.97-.68-5.25-4.34-5.25-1.76 0-2.94.91-3.43 1.78h-.05v-1.78H12.5v11.29H11c-.35 0-.69 0-1.01-.02V16.44H6.23v10.53c-2.55-1.09-3.55-3.45-3.55-7.63v-8.06c-.01-6.2 2.18-8.4 8.32-8.4h8c6.14 0 8.34 2.2 8.34 8.4v8.05Z"
-                        ></path>
-                        <path
-                          d="M8.11 11.42c-1.04 0-1.88.84-1.88 1.88s.84 1.88 1.88 1.88 1.88-.84 1.88-1.88-.84-1.88-1.88-1.88Z"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span>LinkedIn</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+    <footer class="footer_container">
+      <section class="container">
+        <div class="grid_container grid_footer">
+          <div class="grid-column-1">
+            <h2>Contact</h2>
+            <ul>
+              <li><a href="tel:0705570785">Call me: 070-55 70 785</a></li>
+              <li>
+                <a href="mailto:marcus.pettersson0651@stud.hkr.se">
+                  marcus.pettersson0651@stud.hkr.se
+                </a>
+              </li>
+            </ul>
           </div>
-        </section>
-      </div>
+          <div class="grid_column_2">
+            <h2>Social media</h2>
+            <ul>
+              <li>
+                <a class="social_links" href="https://www.facebook.com/">
+                  <span>
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 30 30"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M18.67 28.48h-6v-9.43H11.4c-.77 0-1.4-.61-1.4-1.36V15.2c0-.75.63-1.36 1.4-1.36h1.27v-3.26c0-2.7 2.24-4.88 5-4.88h3.6c.77 0 1.4.61 1.4 1.37v3.12c0 .76-.63 1.37-1.4 1.37h-2.6v2.28h2.5c.43 0 .82.18 1.08.49.27.31.38.73.3 1.13l-.51 2.48a1.4 1.4 0 0 1-1.37 1.09h-2v9.45Zm-4-1.95h2V17.1h3.52l.26-1.3h-3.77v-4.82c0-.75.63-1.36 1.4-1.36h2.6V7.67h-3.01c-1.66 0-3 1.3-3 2.92v5.2H12v1.3h2.67v9.44ZM19 28.48h-8c-7.24 0-10.33-3-10.33-10.08v-7.8C.67 3.52 3.77.5 11 .5h8c7.24 0 10.33 3.03 10.33 10.1v7.8c0 7.07-3.09 10.09-10.33 10.09ZM11 2.46c-6.14 0-8.33 2.13-8.33 8.13v7.81c0 6 2.19 8.13 8.33 8.13h8c6.15 0 8.34-2.13 8.34-8.13v-7.8c0-6-2.2-8.14-8.34-8.14h-8Z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span>Facebook</span>
+                </a>
+              </li>
+              <li>
+                <a class="social_links" href="https://www.instagram.com/">
+                  <span>
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 30 30"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M19 29.75h-8C3.76 29.75.67 26.63.67 19.34v-8.06C.67 3.98 3.77.87 11 .87h8c7.24 0 10.33 3.11 10.33 10.4v8.07c0 7.29-3.09 10.4-10.33 10.4ZM11 2.88c-6.14 0-8.33 2.2-8.33 8.4v8.06c0 6.19 2.19 8.39 8.33 8.39h8c6.15 0 8.34-2.2 8.34-8.4v-8.05c0-6.2-2.2-8.4-8.34-8.4h-8ZM15 21.01A5.7 5.7 0 0 1 15 9.6 5.7 5.7 0 0 1 15 21Zm0-9.4a3.68 3.68 0 0 0-3.66 3.7A3.67 3.67 0 0 0 15 19a3.68 3.68 0 0 0 3.67-3.7A3.68 3.68 0 0 0 15 11.61Zm6.67-2.35a1.3 1.3 0 0 1-.5-.1 1.54 1.54 0 0 1-.45-.29 1.6 1.6 0 0 1-.3-.44 1.33 1.33 0 0 1-.08-.51c0-.18.02-.35.09-.51.08-.18.17-.31.3-.45.06-.05.13-.12.2-.16a1 1 0 0 1 .23-.12.8.8 0 0 1 .26-.08c.42-.1.88.05 1.2.36a1.44 1.44 0 0 1 .38.95c0 .18-.04.36-.1.52-.07.16-.16.3-.28.44-.14.12-.28.21-.44.28a1.3 1.3 0 0 1-.51.11Z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span>Instagram</span>
+                </a>
+              </li>
+              <li>
+                <a class="social_links" href="https://www.linkedin.com/">
+                  <span>
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 30 30"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M19 .87h-8C3.77.87.67 3.98.67 11.28v8.06c0 7.29 3.09 10.41 10.33 10.41h8c7.24-.01 10.33-3.12 10.33-10.41v-8.07C29.33 3.98 26.24.87 19 .87Zm-2.89 26.86v-5.45c0-1.44.29-2.83 2.17-2.83s1.88 1.64 1.88 2.92v5.33c-.37.02-.76.03-1.17.03H16.1Zm11.23-8.4c0 4.19-1.01 6.55-3.55 7.64v-5.28c0-2.97-.68-5.25-4.34-5.25-1.76 0-2.94.91-3.43 1.78h-.05v-1.78H12.5v11.29H11c-.35 0-.69 0-1.01-.02V16.44H6.23v10.53c-2.55-1.09-3.55-3.45-3.55-7.63v-8.06c-.01-6.2 2.18-8.4 8.32-8.4h8c6.14 0 8.34 2.2 8.34 8.4v8.05Z"
+                      ></path>
+                      <path
+                        d="M8.11 11.42c-1.04 0-1.88.84-1.88 1.88s.84 1.88 1.88 1.88 1.88-.84 1.88-1.88-.84-1.88-1.88-1.88Z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span>LinkedIn</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </footer>
   </body>
 </html>

@@ -1,3 +1,4 @@
+/* Standard reset of all standard styling */
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +6,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: greyscale;
 
-  &:focus-visible:not(.textarea-wrapper, .input-field, textarea) {
+  &:focus-visible:not(.textarea_wrapper, .input_field, textarea) {
     outline-width: 4px;
     outline-style: dashed;
     outline-color: var(--grey-800);
@@ -13,21 +14,21 @@
   }
 }
 
+/* focus on textareas doesn't as other elements, so I have to nullify the outline to get the desired effect below */
+
 textarea:focus-visible {
   outline: none;
   border-radius: var(--br-md);
 }
 
-%shared-textarea-select-focus {
+/* When focusing textareas and input fields I want the outline to be full and so that the outline border is a tad thicker than in its original state. I decided to keep it in the same area as the other focus-visible settings to keep it tidy */
+
+.input_field:focus-within,
+.textarea_wrapper:focus-within,
+select:focus-within {
   outline-width: 2px;
   outline-style: solid;
   border-radius: var(--br-md);
-}
-
-.input-field:focus-within,
-.textarea-wrapper:focus-within,
-select:focus-within {
-  @extend %shared-textarea-select-focus;
 }
 
 img,
@@ -119,6 +120,7 @@ video {
   --orange-600: rgb(235, 145, 0);
   --orange-700: rgb(199, 84, 0);
   --orange-800: rgb(164, 39, 0);
+  --underline-color: #2b00ff;
 
   /* Gradients */
   --skill-gradient: linear-gradient(
@@ -260,102 +262,8 @@ body {
   text-wrap: balance;
 }
 
-/* Flexbox */
-.flex {
-  display: flex;
-}
-
-.inline-flex {
-  display: inline-flex;
-}
-
-.flex-row {
-  flex-direction: row;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.flex-space-between {
-  justify-content: space-between;
-}
-
-.flex-align-items-center {
-  align-items: center;
-}
-
-.flex-align-content-center {
-  align-content: center;
-}
-
-.flex-justify-content-center {
-  justify-content: center;
-}
-
-.flex-justify-content-end {
-  justify-content: flex-end;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
-.flex-no-wrap {
-  flex-wrap: nowrap;
-}
-
 .flex_even {
   flex: 1;
-}
-
-.gap-1 {
-  gap: var(--sp-1);
-}
-
-.gap-2 {
-  gap: var(--sp-2);
-}
-
-.gap-2_5 {
-  gap: var(--sp-2_5);
-}
-
-.gap-3 {
-  gap: var(--sp-3);
-}
-
-.gap-3_5 {
-  gap: var(--sp-3_5);
-}
-
-.gap-4 {
-  gap: var(--sp-4);
-}
-
-.gap-6 {
-  gap: var(--sp-6);
-}
-
-.gap-8 {
-  gap: var(--sp-8);
-}
-
-.gap-16 {
-  gap: var(--sp-16);
-}
-
-.pi-16 {
-  padding-inline: var(--sp-16);
-}
-
-.pi-20 {
-  padding-inline: var(--sp-20);
-}
-
-.width-100 {
-  width: 100%;
-  max-width: var(--max-width-page);
 }
 
 .portrait_photo {
@@ -432,14 +340,34 @@ p {
 }
 
 /* Lousy hack to set URL styling as needed */
-a.url {
-  color: var(--blue-800);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  font-weight: var(--text-weight-medium);
+.url {
+  color: var(--primary-font-color);
+  text-decoration-color: var(--underline-color);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 0.2em;
+  transition: text-underline-offset 60ms;
 
-  &:hover {
-    text-decoration-thickness: 3px;
+  /* This line says: if there is https:// in the url, then add the styling in ::after*/
+  &[href^="https://"]::after
+  {
+    content: "";
+    box-sizing: border-box;
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-left: var(--sp-2);
+    background: url(../img/external-link.svg) no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+  }
+
+  @media (min-width: 51em) {
+    &:hover {
+      text-underline-offset: 0.4em;
+    }
   }
 }
 
@@ -472,7 +400,7 @@ a.url {
   max-width: 48ch;
 }
 
-.navigation_header {
+.header_container {
   background-color: var(--white);
   color: var(--black);
   display: flex;
@@ -543,7 +471,7 @@ a.url {
   }
 }
 
-main {
+.main_container {
   display: flex;
   flex-direction: column;
   gap: var(--sp-16);
@@ -557,18 +485,31 @@ main {
 
 .section_base {
   display: flex;
-  flex-direction: row;
-  gap: var(--sp-8);
   max-width: var(--max-width-page);
   width: 100%;
+
+  &.colored_section {
+    padding-block: var(--sp-8) var(--sp-16);
+    padding-inline: var(--sp-20);
+  }
+
+  &.row_section {
+    flex-direction: row;
+    gap: var(--sp-8);
+  }
 
   &.standard_section {
     padding-inline: var(--sp-20);
   }
 
-  &.colored_section {
-    padding-block: var(--sp-8) var(--sp-16);
-    padding-inline: var(--sp-20);
+  &.project_section {
+    gap: var(--sp-8);
+  }
+
+  .text_section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
   }
 }
 
@@ -649,12 +590,20 @@ main {
   align-content: center;
 }
 
-.short_form {
+hr {
+  background-color: var(--grey-400);
+  border: 0;
+  display: block;
+  height: 2px;
+  width: 100%;
 }
 
-footer {
-  color: var(--white);
+.footer_container {
   background-color: var(--black);
+  color: var(--white);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   margin-top: auto;
   padding-top: var(--sp-16);
   padding-bottom: var(--sp-24);
@@ -698,22 +647,11 @@ footer {
 
 /* Different sections */
 
-/* Colored backgrounds */
-.colored-bg-padding {
-  padding-block: var(--sp-8) var(--sp-16);
-  padding-inline: var(--sp-6);
-
-  @media screen and (min-width: 64rem) {
-    padding-block: var(--sp-8) var(--sp-16);
-    padding-inline: var(--sp-20);
-  }
-}
-
-.white-bg {
+.white_bg {
   background: var(--white);
 }
 
-.grey-bg {
+.grey_bg {
   background: var(--grey-200);
 }
 
@@ -738,7 +676,7 @@ textarea {
 }
 
 /* Nav buttons */
-ul.nav-buttons {
+.nav_buttons {
   display: flex;
   flex-direction: row;
   gap: var(--sp-4);
@@ -783,28 +721,27 @@ ul.nav-buttons {
 }
 
 /* Icon flex */
-.social-links {
+.social_links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+
   svg {
     fill: var(--white);
   }
 }
 
 /* Grids */
-.grid-wrapper {
+.grid_container {
   display: flex;
   flex-direction: column;
 
   @media screen and (min-width: 64rem) {
     display: grid;
 
-    &.grid-main-application {
-      grid-template-areas: "text-input text-output";
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-flow: row;
-      column-gap: var(--sp-4);
-    }
-
-    &.grid-footer {
+    &.grid_footer {
+      gap: var(--sp-6);
       grid-template-areas: "column-1 column-2 column-3 column-4";
       grid-template-columns: repeat(4, 1fr);
       grid-auto-flow: row;
@@ -813,44 +750,48 @@ ul.nav-buttons {
   }
 }
 
-.grid-column-1 {
+.grid_column_1 {
   @media screen and (min-width: 64rem) {
     grid-area: column-1;
   }
 }
 
-.grid-column-2 {
+.grid_column_2 {
   @media screen and (min-width: 64rem) {
     grid-area: column-2;
   }
 }
 
-.grid-column-3 {
+.grid_column_3 {
   @media screen and (min-width: 64rem) {
     grid-area: column-3;
   }
 }
 
-.grid-column-4 {
+.grid_column_4 {
   @media screen and (min-width: 64rem) {
     grid-area: column-4;
   }
 }
 
 /* Button styling */
-.large-button {
+.large_button {
+  align-items: center;
   background: var(--black);
   border: var(--border-black);
   border-radius: var(--br-full);
   color: var(--white);
   cursor: pointer;
+  display: flex;
   font-family: var(--primary-font);
   font-weight: var(--text-weight-base);
   font-size: var(--text-lg);
   height: 4rem;
+  justify-content: center;
   min-width: 6.25rem;
   max-width: fit-content;
   padding: var(--sp-4) var(--sp-8);
+  positon: relative;
   text-decoration: none;
   text-align: center;
 
@@ -874,10 +815,7 @@ ul.nav-buttons {
   }
 }
 
-.image-border {
+.image_project {
   border: var(--border-black);
-}
-
-.image-border-radius {
   border-radius: var(--br-md);
 }

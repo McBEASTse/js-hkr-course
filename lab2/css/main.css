@@ -14,6 +14,7 @@
 }
 
 /* focus-within doesn't work so well with textareas, so I have to do a hack: first, I remove all focus properties from textarea (focus-visible, outline: none). Then (with a wrapper) I set an outline of that wrapper when the textarea is focused (active). */
+
 textarea:focus-visible {
   border-radius: var(--br-md);
   outline: none;
@@ -40,28 +41,36 @@ svg {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/roboto-v30-latin-regular.woff2") format("woff2"), url("../fonts/roboto-v30-latin-regular.woff") format("woff");
+  src:
+    url("../fonts/roboto-v30-latin-regular.woff2") format("woff2"),
+    url("../fonts/roboto-v30-latin-regular.woff") format("woff");
 }
 @font-face {
   font-display: swap;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
-  src: url("../fonts/roboto-v30-latin-500.woff2") format("woff2"), url("../fonts/roboto-v30-latin-500.woff") format("woff");
+  src:
+    url("../fonts/roboto-v30-latin-500.woff2") format("woff2"),
+    url("../fonts/roboto-v30-latin-500.woff") format("woff");
 }
 @font-face {
   font-display: swap;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
-  src: url("../fonts/roboto-v30-latin-700.woff2") format("woff2"), url("../fonts/roboto-v30-latin-700.woff") format("woff");
+  src:
+    url("../fonts/roboto-v30-latin-700.woff2") format("woff2"),
+    url("../fonts/roboto-v30-latin-700.woff") format("woff");
 }
 @font-face {
   font-display: swap;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 900;
-  src: url("../fonts/roboto-v30-latin-900.woff2") format("woff2"), url("../fonts/roboto-v30-latin-900.woff") format("woff");
+  src:
+    url("../fonts/roboto-v30-latin-900.woff2") format("woff2"),
+    url("../fonts/roboto-v30-latin-900.woff") format("woff");
 }
 /* Setting some root variables so it's easier to use them later on. */
 :root {
@@ -849,7 +858,8 @@ hr {
   transition: text-underline-offset 60ms;
   /* This line says: if there is https:// in a hyperlink, then add a small symbol ::after the hyperlink */
 }
-.url[href^="https://"]::after {
+.url[href^="https://"]::after
+{
   /* So this says "make the ::after empty, but make it a certain size. Then set a background in that empty space with no repeat". As content can't be an image, I nneed to use a background instead. */
   background: url(../img/external-link.svg) no-repeat;
   background-position: center;

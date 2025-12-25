@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lab 1 - Marcus Pettersson</title>
+    <title>Lab 2 - Marcus Pettersson</title>
     <link rel="preload" href="css/main.css" as="style" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" sizes="16x16" />
@@ -44,8 +44,8 @@
       </section>
       <section class="section_container">
         <div class="section_base standard_section">
-          <div class="large_contact_form" id="contact_form">
-            <form class="column_listing" action="/submit-form" method="POST">
+          <div class="large_contact_form">
+            <form class="column_listing" id="contact_form">
               <div class="form_name_container">
                 <div class="form_container flex_even">
                   <label class="textarea_label" for="first_name">
@@ -111,28 +111,29 @@
                 </select>
               </div>
               <div class="form_container">
-                <label class="textarea_label" for="content">
+                <label class="textarea_label" for="sender_message">
                   What is your message
                 </label>
                 <div class="textarea_wrapper">
                   <textarea
                     class="input_field"
-                    id="content"
-                    name="message_content"
+                    id="sender_message"
+                    name="sender_message"
                     rows="3"
                     required
                   ></textarea>
                 </div>
               </div>
+              <div class="form_button_container">
+                <button class="large_button secondary_button" type="reset">
+                  Reset
+                </button>
+                <button class="large_button main_button" type="submit">
+                  Send message
+                </button>
+                <div id="updatedDiv"></div>
+              </div>
             </form>
-            <div class="form_button_container">
-              <button class="large_button secondary_button" type="reset">
-                Reset
-              </button>
-              <button class="large_button main_button" type="submit">
-                Send message
-              </button>
-            </div>
           </div>
         </div>
       </section>
@@ -216,5 +217,6 @@
         </div>
       </section>
     </footer>
+    <script src="scripts/contact.js"></script>
   </body>
 </html>

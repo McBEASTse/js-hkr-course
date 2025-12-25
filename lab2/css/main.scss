@@ -1,0 +1,874 @@
+/* Standard reset of all standard styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: greyscale;
+
+  &:focus-visible:not(.textarea_wrapper, .input_field, textarea) {
+    outline-color: var(--grey-dark);
+    outline-offset: var(--sp-1);
+    outline-style: dashed;
+    outline-width: 4px;
+  }
+}
+
+/* focus-within doesn't work so well with textareas, so I have to do a hack: first, I remove all focus properties from textarea (focus-visible, outline: none). Then (with a wrapper) I set an outline of that wrapper when the textarea is focused (active). */
+
+textarea:focus-visible {
+  border-radius: var(--br-md);
+  outline: none;
+}
+
+/* When focusing textareas and input fields I want the outline to be full and so that the outline border is a tad thicker than in its original state. I decided to keep it in the same area as the other focus-visible settings to keep it tidy. */
+
+.input_field:focus-within,
+.textarea_wrapper:focus-within {
+  border-radius: var(--br-md);
+  outline-style: solid;
+  outline-width: 2px;
+}
+
+img,
+svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Set some fonts. I'm using font-display: swap so it swaps the standard font to Roboto when it's loaded. Why I don't just use a script to load it directly from Google? Call me paranoid and it loads faster if it's local. */
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url("../fonts/roboto-v30-latin-regular.woff2") format("woff2"),
+    url("../fonts/roboto-v30-latin-regular.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url("../fonts/roboto-v30-latin-500.woff2") format("woff2"),
+    url("../fonts/roboto-v30-latin-500.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url("../fonts/roboto-v30-latin-700.woff2") format("woff2"),
+    url("../fonts/roboto-v30-latin-700.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 900;
+  src:
+    url("../fonts/roboto-v30-latin-900.woff2") format("woff2"),
+    url("../fonts/roboto-v30-latin-900.woff") format("woff");
+}
+
+/* Setting some root variables so it's easier to use them later on. */
+
+:root {
+  /* Colors */
+  --white: #ffffff;
+  --black: #000000;
+  --grey-light: #f5f5f5;
+  --grey-mid-light: #d8dcdd;
+  --grey-mid: #646e72;
+  --grey-dark: #40454a;
+  --yellow-light: #fff8e3;
+  --yellow-mid: #ffe38a;
+  --yellow-dark: #ffd400;
+  --underline-color: #2b00ff;
+
+  /* Gradients */
+  --skill-gradient: linear-gradient(
+    135deg,
+    var(--yellow-light) 0%,
+    var(--yellow-mid) 50%,
+    var(--yellow-dark) 100%
+  );
+
+  /* Border radius */
+  --br-none: 0px;
+  --br-sm: 0.125rem;
+  --br-default: 0.25rem;
+  --br-md: 0.375rem;
+  --br-lg: 0.5rem;
+  --br-xl: 0.75rem;
+  --br-2xl: 1rem;
+  --br-3xl: 1.5rem;
+  --br-4xl: 2rem;
+  --br-5xl: 2.5rem;
+  --br-6xl: 3rem;
+  --br-full: 9999px;
+
+  /* Spacing (these are all "magic numbers") but I've come up with them I'm used to them. */
+  --sp-0: 0px;
+  --sp-px: 1px;
+  --sp-0_5: 0.125rem;
+  --sp-1: 0.25rem;
+  --sp-1_5: 0.375rem;
+  --sp-2: 0.5rem;
+  --sp-2_5: 0.625rem;
+  --sp-3: 0.75rem;
+  --sp-3_5: 0.875rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-7: 1.75rem;
+  --sp-7_5: 1.875rem;
+  --sp-8: 2rem;
+  --sp-9: 2.25rem;
+  --sp-10: 2.5rem;
+  --sp-11: 2.75rem;
+  --sp-12: 3rem;
+  --sp-14: 3.5rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+  --sp-28: 7rem;
+  --sp-32: 8rem;
+  --sp-36: 9rem;
+  --sp-40: 10rem;
+  --sp-44: 11rem;
+  --sp-48: 12rem;
+  --sp-52: 13rem;
+  --sp-56: 14rem;
+  --sp-60: 15rem;
+  --sp-64: 16rem;
+  --sp-72: 18rem;
+  --sp-80: 20rem;
+  --sp-96: 24rem;
+
+  /* Font family */
+  --primary-font: "Roboto", sans-serif;
+
+  /* Font sizes */
+  --text-xs: 0.875rem;
+  --text-sm: 1rem;
+  --text-base: 1.125rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.5rem;
+  --text-1_5xl: 1.5625rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.125rem;
+  --text-4xl: 2.5rem;
+  --text-4_5xl: 2.75rem;
+  --text-5_5xl: 3rem;
+  --text-6xl: 4rem;
+
+  /* Font weight */
+  --text-weight-base: 400;
+  --text-weight-medium: 500;
+  --text-weight-bold: 600;
+  --text-weight-black: 700;
+
+  /* Line height. This is actually WCAG AAA compliant. */
+  --lh: 1.5;
+
+  /* Max widths. To much text per line is harder to read. The maximum is 65 characters, but I find it better to keep lines a bit shorter. */
+  --max-width-text: 52ch;
+
+  /* Page paddings */
+  --max-width-page: 1440px;
+
+  /* Borders. I know I'm just using one in this project, but this gives me flexibility to add more borders. */
+  --border-black: 2px solid var(--black);
+
+  /* Breakpoints for when @media queries should apply. */
+  --bp-xs: 26rem;
+  --bp-sm: 40rem;
+  --bp-md: 48rem;
+  --bp-lg: 64rem;
+  --bp-xl: 80rem;
+  --bp-2xl: 96rem;
+
+  /* Shadow for the hover effect. */
+  --shadow: 8px 8px var(--shadow-color);
+  --shadow-color: var(--grey-mid);
+}
+
+/* HTML base settings */
+html {
+  background: var(--white);
+  /* Setting the base font size for 1rem. */
+  font-size: 16px;
+  /* Smoother scroll on browsers that support it. */
+  scroll-behavior: smooth;
+  /* So there is no "blinking" on mobile devices when an interactable element is tapped. */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Setting the body as a column flex and the height to 100vh pushes the footer down at the bottom on all devices and screen sizes, no matter of the amount of content on a page. */
+body {
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--primary-font);
+  font-size: var(--text-base);
+  font-weight: var(--text-weight-light);
+  gap: var(--sp-16);
+  line-height: var(--lh);
+  min-height: 100vh;
+  text-wrap: balance;
+}
+
+/* Fonts. In SCSS, it would have been easier to just use an @extend variable for setting all the base font styling. Or I could just use a base font class for all text elements. */
+h1 {
+  color: var(--header-black);
+  font-size: var(--text-3xl);
+  font-weight: var(--text-weight-black);
+  max-width: var(--max-width-text);
+
+  @media screen and (min-width: 64rem) {
+    font-size: var(--text-6xl);
+  }
+}
+
+h2 {
+  color: var(--header-black);
+  font-size: var(--text-xl);
+  font-weight: var(--text-weight-black);
+  max-width: var(--max-width-text);
+
+  @media screen and (min-width: 64rem) {
+    font-size: var(--text-3xl);
+  }
+}
+
+h3 {
+  color: var(--header-black);
+  font-size: var(--text-lg);
+  font-weight: var(--text-weight-black);
+  max-width: var(--max-width-text);
+}
+
+h4 {
+  color: var(--header-black);
+  font-size: var(--text-lg);
+  font-weight: var(--text-weight-black);
+  max-width: var(--max-width-text);
+
+  @media screen and (min-width: 64rem) {
+    font-size: var(--text-xl);
+  }
+}
+
+h5 {
+  color: var(--header-black);
+  font-size: var(--text-base);
+  font-weight: var(--text-weight-black);
+  max-width: var(--max-width-text);
+
+  @media screen and (min-width: 64rem) {
+    font-size: var(--text-lg);
+  }
+}
+
+h6 {
+  color: var(--header-black);
+  font-size: var(--text-base);
+  font-weight: var(--text-weight-black);
+  max-width: var(--max-width-text);
+
+  @media screen and (min-width: 64rem) {
+    font-size: var(--text-base);
+  }
+}
+
+p {
+  color: var(--grey-dark);
+  font-size: var(--text-sm);
+  max-width: var(--max-width-text);
+
+  @media screen and (min-width: 64rem) {
+    font-size: var(--text-lg);
+  }
+}
+
+/* All classes below. I've listed them alphabetically to keep some kind of order of things. */
+
+/* This is basically setting a child element so it's positioned in the centre of the parent. */
+.center_all {
+  align-content: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* I've found using containers helps a lot when working with flexbox, especially also when using divs. */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  max-width: var(--max-width-page);
+  padding-inline: var(--sp-4);
+  width: 100%;
+
+  @media screen and (min-width: 54rem) {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @media screen and (min-width: 64rem) {
+    padding-inline: var(--sp-20);
+  }
+}
+
+/* This is mainly for setting the content so it goes vertically. Not needed per se, but why not. */
+.column_listing {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+/* This is for setting even sizes for elements on certain sections, so I don't have to use grid. */
+.flex_even {
+  flex: 1;
+}
+
+/* The footer. Could have just set the styling for the footer tag, but... */
+.footer_container {
+  background-color: var(--black);
+  color: var(--white);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: auto;
+  padding-bottom: var(--sp-24);
+  padding-top: var(--sp-16);
+
+  h2 {
+    color: var(--white);
+    font-size: var(--text-lg);
+
+    & + * {
+      margin-top: var(--sp-2);
+    }
+  }
+
+  a {
+    color: var(--white);
+    font-weight: var(--text-weight-light);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+
+    &:hover {
+      color: inherit;
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+
+    li {
+      list-style-type: none;
+      margin-bottom: var(--sp-2);
+      height: 30px;
+      width: max-content;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  /* Flexbox in the social-media hyperlinks in the footer, to maintain the same spacing between the image and text. */
+  .social_links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+
+    svg {
+      fill: var(--white);
+    }
+  }
+}
+
+/* For small things like this, Tailwind seems like a better option, or doing a home-made hybrid (which I've tried and it works great until you need to do some @media queries, then it's a nightmare to use). */
+.form_container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* For sections using a colored background */
+.grey_bg {
+  background: var(--grey-light);
+}
+
+/* Grids */
+.grid_container {
+  /* If the screen is too small for using a grid, it will default to a flexbox instead. */
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+
+  @media screen and (min-width: 64rem) {
+    display: grid;
+
+    /* This splits the footer in to four sections, but in my case I'm only using two. But it looks neater this way, and sets things up if I want to add columns in the future. */
+    &.grid_footer {
+      gap: var(--sp-6);
+      grid-template-areas: "column-1 column-2 column-3 column-4";
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-flow: row;
+      column-gap: var(--sp-12);
+    }
+  }
+
+  /* I'm only using grid if the screen is big enough, otherwise it will default to flexbox instead. */
+  .grid_column_1 {
+    @media screen and (min-width: 64rem) {
+      grid-area: column-1;
+    }
+  }
+
+  .grid_column_2 {
+    @media screen and (min-width: 64rem) {
+      grid-area: column-2;
+    }
+  }
+
+  .grid_column_3 {
+    @media screen and (min-width: 64rem) {
+      grid-area: column-3;
+    }
+  }
+
+  .grid_column_4 {
+    @media screen and (min-width: 64rem) {
+      grid-area: column-4;
+    }
+  }
+}
+
+.header_container {
+  background-color: var(--white);
+  color: var(--black);
+  display: flex;
+  flex-direction: row;
+  min-height: 6rem;
+  justify-content: center;
+  padding-block: var(--sp-4);
+  position: relative;
+
+  @media screen and (min-width: 64rem) {
+    min-height: 8rem;
+  }
+}
+
+/* Just a basic horizontal line to separate my projects, instead of having to use colored backgrounds for each section. */
+hr {
+  background-color: var(--grey-mid-light);
+  border: 0;
+  display: block;
+  height: 2px;
+  width: 100%;
+}
+
+/* These are just for the images in my project page. */
+.image_project {
+  border: var(--border-black);
+  border-radius: var(--br-md);
+}
+
+.input_field {
+  border: var(--border-black);
+  border-radius: var(--br-md);
+  font-size: var(--text-base);
+  padding: var(--sp-2);
+}
+
+/* As mentioned before, I understand the need for Tailwind sometimes... */
+.input_field_information {
+  max-width: 48ch;
+}
+
+/* So much styling for just one button...! */
+.large_button {
+  align-items: center;
+  background: var(--black);
+  border: var(--border-black);
+  border-radius: var(--br-full);
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--primary-font);
+  font-size: var(--text-base);
+  font-weight: var(--text-weight-base);
+  height: 4rem;
+  justify-content: center;
+  max-width: fit-content;
+  min-width: 6.25rem;
+  padding: var(--sp-4) var(--sp-8);
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--grey-dark);
+  }
+
+  &:active {
+    background: var(--grey-mid);
+  }
+
+  @media screen and (max-width: 64rem) {
+    & svg {
+      font-size: var(--text-lg);
+      max-height: 24px;
+      max-width: 24px;
+    }
+  }
+}
+
+.large_contact_form {
+  width: 100%;
+}
+
+/* Container for the logo with flexbox. */
+.logo_container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: var(--sp-3);
+  text-decoration: none;
+
+  /* So this hack says "if the screen is larger than a standard mobile phone, add a shadow to the image when whe hyperlink is hovered". Therefore the whole "logo" triggers the shadow effect on just the image. */
+  &.logo_link {
+    /* Set the styling of the logo. */
+    .image_logo {
+      border: var(--border-black);
+      border-radius: var(--br-full);
+      box-shadow: none;
+      height: 64px;
+      transition: box-shadow 60ms;
+      width: 64px;
+    }
+
+    .logo_text {
+      color: var(--black);
+      font-weight: var(--text-weight-black);
+      font-size: var(--text-lg);
+      line-height: 1;
+      width: min-content;
+    }
+
+    @media (min-width: 38rem) {
+      &:hover .image_logo {
+        box-shadow: var(--shadow);
+      }
+    }
+  }
+}
+
+/* Instead of using margins - flexbox! */
+.main_container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+
+  @media screen and (min-width: 64rem) {
+    gap: var(--sp-16);
+  }
+}
+
+/* This is for keeping the navigation neat and tidy. */
+.navigation_buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  list-style-type: none;
+
+  li {
+    list-style-type: none;
+    width: fit-content;
+
+    a {
+      background: var(--white);
+      border: var(--border-black);
+      border-radius: var(--br-full);
+      box-shadow: none;
+      color: var(--black);
+      font-size: var(--text-sm);
+      font-weight: var(--text-weight-medium);
+      padding-block: var(--sp-2);
+      padding-inline: var(--sp-8);
+      text-decoration: none;
+
+      @media screen and (min-width: 64rem) {
+        font-size: var(--text-lg);
+
+        &:hover {
+          background: var(--yellow-mid);
+          box-shadow: var(--shadow);
+          font-size: var(--text-lg);
+          transition: box-shadow 60ms;
+        }
+
+        &:active {
+          background: var(--yellow-dark);
+        }
+      }
+    }
+  }
+}
+
+/* Special image styling for the portrait photo on the start page */
+.portrait_photo {
+  border: var(--border-black);
+  border-radius: var(--br-full);
+  max-width: 14rem;
+  max-height: 14rem;
+
+  @media screen and (min-width: 64rem) {
+    max-width: 20rem;
+    max-height: 20rem;
+  }
+}
+
+.section_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media screen and (min-width: 64rem) {
+    flex-direction: row;
+  }
+}
+
+/* I had to first set a base for all sections, then depending on what type of section it is, there is different spacing. I have this setup so I can use colored backgrounds on sections that goes outside of the most outer vertical alignment on each side. */
+.section_base {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--max-width-page);
+  width: 100%;
+
+  @media screen and (min-width: 64rem) {
+    flex-direction: row;
+  }
+
+  /* This class is styled so that the background goes outside the base gridline (outer most left and right side). */
+  &.colored_section {
+    padding-block: var(--sp-4) var(--sp-10);
+    padding-inline: var(--sp-4);
+
+    @media screen and (min-width: 64rem) {
+      padding-block: var(--sp-8) var(--sp-16);
+      padding-inline: var(--sp-20);
+    }
+  }
+
+  &.split_section {
+    flex-direction: column;
+    gap: var(--sp-8);
+
+    @media screen and (min-width: 38rem) {
+      flex-direction: row;
+    }
+  }
+
+  /* This sets the section so it follows the outer most gridlines. */
+  &.standard_section {
+    padding-inline: var(--sp-4);
+
+    @media screen and (min-width: 64rem) {
+      padding-inline: var(--sp-20);
+    }
+  }
+
+  &.project_section {
+    gap: var(--sp-8);
+  }
+
+  .image_section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    order: 1;
+
+    @media screen and (min-width: 64rem) {
+      order: 2;
+    }
+  }
+
+  .text_section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    order: 2;
+
+    @media screen and (min-width: 64rem) {
+      order: 1;
+    }
+  }
+}
+
+.skill_contact_sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+/* This is all for creating the bars in the skill section. */
+.skill_listing {
+  display: flex;
+  flex-direction: row;
+  gap: var(--sp-4);
+  list-style: none;
+
+  @media screen and (min-width: 64rem) {
+    max-width: 80%;
+  }
+
+  /* First, set the text so it aligns to the right and therefore is easier to see what bar is for what skill. */
+  .skill_text {
+    display: flex;
+    justify-content: center;
+    font-weight: var(--text-weight-medium);
+    max-width: 12ch;
+    width: 100%;
+
+    @media screen and (min-width: 64rem) {
+      justify-content: end;
+    }
+  }
+
+  /* This sets the outline for the bar. isolation is for making it so that content inside the given element (in this case the white bar) will not overflow outside of it's boundaries. So basically it's like using layer masks in Photoshop: everything in this layer should be inside of the layer below. */
+  .skill_rating {
+    background-color: var(--white);
+    border: var(--border-black);
+    border-radius: var(--br-full);
+    isolation: isolate;
+    overflow: hidden;
+    padding: var(--sp-2) var(--sp-8);
+    position: relative;
+    width: 100%;
+
+    /* I'm using ::before to get the bar to start from the left inside the white parent. The content is set to none "" as I don't need or want any text inside the bar.
+
+    So here I set the position to absolute, so it's position is absolute to the position of it's parent element (in this case the white bar).
+
+    The inset property fills out the whole area to it's parents borders. This is much more convenient than to set a X and Y position (because of the absolute position) and fills out the whole space as I want to.
+
+    The naming of these classes is just gibberish as there is no lowest or highest value of the skill rating. In a real portfolio, I would't use rating of my skills at all. */
+    &.denwuo {
+      &::before {
+        background: var(--skill-gradient);
+        border-radius: 0 var(--br-full) var(--br-full) 0;
+        content: "";
+        inset: 0;
+        outline: var(--border-black);
+        position: absolute;
+        width: 27%;
+      }
+    }
+
+    &.treefiddy {
+      &::before {
+        background: var(--skill-gradient);
+        border-radius: 0 var(--br-full) var(--br-full) 0;
+        content: "";
+        inset: 0;
+        outline: var(--border-black);
+        position: absolute;
+        width: 31%;
+      }
+    }
+
+    &.twcha {
+      &::before {
+        background: var(--skill-gradient);
+        border-radius: 0 var(--br-full) var(--br-full) 0;
+        content: "";
+        inset: 0;
+        outline: var(--border-black);
+        position: absolute;
+        width: 13%;
+      }
+    }
+
+    &.twenquan {
+      &::before {
+        background: var(--skill-gradient);
+        border-radius: 0 var(--br-full) var(--br-full) 0;
+        content: "";
+        inset: 0;
+        outline: var(--border-black);
+        position: absolute;
+        width: 42%;
+      }
+    }
+  }
+}
+
+.textarea_label {
+  color: var(--black);
+  font-size: var(--text-base);
+  font-weight: var(--text-weight-bold);
+  max-width: max-content;
+}
+
+/* This wrapper is to set the size of the textarea, and is also used to get an outline when the textarea inside is active. This is set in the top of the styling, as textareas themselves doesn't work well with focus-within. */
+.textarea_wrapper {
+  width: 100%;
+  height: 100%;
+
+  textarea {
+    color: var(--black);
+    font: var(--font-weight-base);
+    font-size: var(--text-base);
+    height: 100%;
+    min-height: 10rem;
+    resize: none;
+    width: 100%;
+  }
+}
+
+/* Lousy hack to set hyperlink-styling as I want. */
+.url {
+  color: var(--primary-font-color);
+  text-decoration-color: var(--underline-color);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 0.2em;
+  transition: text-underline-offset 60ms;
+
+  /* This line says: if there is https:// in a hyperlink, then add a small symbol ::after the hyperlink */
+  &[href^="https://"]::after
+  {
+    /* So this says "make the ::after empty, but make it a certain size. Then set a background in that empty space with no repeat". As content can't be an image, I nneed to use a background instead. */
+    background: url(../img/external-link.svg) no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    display: inline-block;
+    height: 1.4rem;
+    margin-left: var(--sp-2);
+    width: 1.4rem;
+  }
+
+  @media (min-width: 51em) {
+    &:hover {
+      text-underline-offset: 0.4em;
+    }
+  }
+}

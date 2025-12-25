@@ -45,17 +45,32 @@
       <section class="section_container">
         <div class="section_base standard_section">
           <div class="large_contact_form" id="contact_form">
-            <h2>Contact form</h2>
             <form class="column_listing" action="/submit-form" method="POST">
-              <div class="form_container">
-                <label class="textarea_label" for="name">Your name</label>
-                <input
-                  class="input_field input_field_information"
-                  type="text"
-                  id="name"
-                  name="senders_name"
-                  required
-                />
+              <div class="form_name_container">
+                <div class="form_container flex_even">
+                  <label class="textarea_label" for="first_name">
+                    First Name
+                  </label>
+                  <input
+                    class="input_field input_field_information"
+                    type="text"
+                    id="first_name"
+                    name="first_name"
+                    required
+                  />
+                </div>
+                <div class="form_container flex_even">
+                  <label class="textarea_label" for="last_name">
+                    Last Name
+                  </label>
+                  <input
+                    class="input_field input_field_information"
+                    type="text"
+                    id="last_name"
+                    name="last_name"
+                    required
+                  />
+                </div>
               </div>
               <div class="form_container">
                 <label class="textarea_label" for="email">Your email</label>
@@ -68,8 +83,36 @@
                 />
               </div>
               <div class="form_container">
+                <label class="textarea_label" for="phone_number">
+                  Phone number (optional)
+                </label>
+                <input
+                  class="input_field input_field_information"
+                  type="tel"
+                  id="phone_number"
+                  name="senders_phone_number"
+                />
+              </div>
+              <div class="form_container">
+                <label class="textarea_label" for="subject">
+                  What is this about
+                </label>
+                <select
+                  class="input_field input_field_information"
+                  name="subject"
+                  id="subject"
+                  required
+                >
+                  <option value="get_information">Information</option>
+                  <option value="give_information">
+                    Give us more information
+                  </option>
+                  <option value="work_opportunity">We want to hire you</option>
+                </select>
+              </div>
+              <div class="form_container">
                 <label class="textarea_label" for="content">
-                  What you want
+                  What is your message
                 </label>
                 <div class="textarea_wrapper">
                   <textarea
@@ -82,7 +125,14 @@
                 </div>
               </div>
             </form>
-            <button class="large_button" type="submit">Send Message</button>
+            <div class="form_button_container">
+              <button class="large_button secondary_button" type="reset">
+                Reset
+              </button>
+              <button class="large_button main_button" type="submit">
+                Send message
+              </button>
+            </div>
           </div>
         </div>
       </section>

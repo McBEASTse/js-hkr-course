@@ -404,6 +404,25 @@ p {
 .form_container {
   display: flex;
   flex-direction: column;
+  gap: var(--sp-0_5);
+}
+
+.form_name_container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+
+  @media screen and (min-width: 64rem) {
+    flex-direction: row;
+    gap: var(--sp-4);
+  }
+}
+
+.form_button_container {
+  display: flex;
+  flex-direction: row;
+  gap: var(--sp-4);
+  justify-content: end;
 }
 
 /* For sections using a colored background */
@@ -488,6 +507,7 @@ hr {
 }
 
 .input_field {
+  background: white;
   border: var(--border-black);
   border-radius: var(--br-md);
   font-size: var(--text-base);
@@ -502,15 +522,13 @@ hr {
 /* So much styling for just one button...! */
 .large_button {
   align-items: center;
-  background: var(--black);
   border: var(--border-black);
   border-radius: var(--br-full);
-  color: var(--white);
   cursor: pointer;
   display: flex;
   font-family: var(--primary-font);
   font-size: var(--text-base);
-  font-weight: var(--text-weight-base);
+  font-weight: var(--text-weight-bold);
   height: 4rem;
   justify-content: center;
   max-width: fit-content;
@@ -520,12 +538,30 @@ hr {
   text-align: center;
   text-decoration: none;
 
-  &:hover {
-    background: var(--grey-dark);
+  &.main_button {
+    background: var(--black);
+    color: var(--white);
+
+    &:hover {
+      background: var(--grey-dark);
+    }
+
+    &:active {
+      background: var(--grey-mid);
+    }
   }
 
-  &:active {
-    background: var(--grey-mid);
+  &.secondary_button {
+    background: var(--white);
+    color: var(--black);
+
+    &:hover {
+      background: var(--grey-mid-light);
+    }
+
+    &:active {
+      background: var(--grey-light);
+    }
   }
 
   @media screen and (max-width: 64rem) {
@@ -538,6 +574,10 @@ hr {
 }
 
 .large_contact_form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  max-width: 48rem;
   width: 100%;
 }
 

@@ -5,8 +5,7 @@ const emailInput = document.getElementById("email");
 const phoneNumberInput = document.getElementById("phone_number");
 const subjectInput = document.getElementById("subject");
 const senderMessageInput = document.getElementById("sender_message");
-const requiredField = document.querySelectorAll("input[required]");
-const updatedDiv = document.getElementById("updatedDiv");
+const messageLengthCounter = document.getElementById("message_length");
 
 function clearError(input) {
   // First go to the parent element of the input element.
@@ -28,7 +27,7 @@ function showError(input, message) {
   // If there is no errorDisplay variable, create a paragraph with class error_message.
   if (!errorDisplay) {
     errorDisplay = document.createElement("p");
-    errorDisplay.className = "error_text";
+    errorDisplay.className = "error_text error_text_visible";
     container.appendChild(errorDisplay);
   }
   // Show the passed error message.
@@ -82,35 +81,54 @@ function validatePhoneNumber(input) {
   }
 }
 
+// This basically works the same as the other functions.
+function validateMessage(input) {
+  const messageLength = input.value.trim().length;
+
+  if (messageLength === 0) {
+    console.log("Message field is empty");
+  } else if (messageLength <= 19) {
+    console.log("Message is too short");
+  } else {
+    console.log("Message is OK");
+  }
+  messageLengthCounter.innerText = messageLength;
+}
+
 // Here we check the input field for the first name.
-firstNameInput.addEventListener("blur", function () {
+firstNameInput.addEventListener("input", function () {
   validateName(firstNameInput);
 });
 
 // Here we check the input field for the last name.
-lastNameInput.addEventListener("blur", function () {
+lastNameInput.addEventListener("input", function () {
   validateName(lastNameInput);
 });
 
 // Here we check the input field for email.
-emailInput.addEventListener("blur", function () {
+emailInput.addEventListener("input", function () {
   validateEmail(emailInput);
 });
-//
+
 // Here we check the input field for phone number.
-phoneNumberInput.addEventListener("blur", function () {
+phoneNumberInput.addEventListener("input", function () {
   validatePhoneNumber(phoneNumberInput);
 });
 
-contactForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  if (requiredField.value.trim() === "") {
-    updatedDiv.textContent = "That shit was empty";
-    console.log("Form NOT submitted.");
-  } else {
-    contactForm.submit();
-    updatedDiv.textContent = "That shit was sent";
-    console.log("Form submitted.");
-  }
+// Here we call the validateMessage() to check if the message is long enough.
+senderMessageInput.addEventListener("input", function () {
+  validateMessage(senderMessageInput);
 });
+
+// contactForm.addEventListener("submit", function (event) {
+//   event.preventDefault();
+//
+//   if (requiredField.value.trim() === "") {
+//     updatedDiv.textContent = "That shit was empty";
+//     console.log("Form NOT submitted.");
+//   } else {
+//     contactForm.submit();
+//     updatedDiv.textContent = "That shit was sent";
+//     console.log("Form submitted.");
+//   }
+// });

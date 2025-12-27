@@ -49,7 +49,7 @@
               <div class="form_name_container">
                 <div class="form_container flex_even">
                   <label class="textarea_label" for="first_name">
-                    First Name
+                    First Name (required)
                   </label>
                   <input
                     class="input_field input_field_information"
@@ -61,7 +61,7 @@
                 </div>
                 <div class="form_container flex_even">
                   <label class="textarea_label" for="last_name">
-                    Last Name
+                    Last Name (required)
                   </label>
                   <input
                     class="input_field input_field_information"
@@ -73,7 +73,9 @@
                 </div>
               </div>
               <div class="form_container">
-                <label class="textarea_label" for="email">Your email</label>
+                <label class="textarea_label" for="email">
+                  Your email (required)
+                </label>
                 <input
                   class="input_field input_field_information"
                   type="email"
@@ -112,16 +114,20 @@
               </div>
               <div class="form_container">
                 <label class="textarea_label" for="sender_message">
-                  What is your message
+                  What is your message (required)
                 </label>
-                <div class="textarea_wrapper">
-                  <textarea
-                    class="input_field"
-                    id="sender_message"
-                    name="sender_message"
-                    rows="3"
-                    required
-                  ></textarea>
+                <textarea
+                  class="input_field"
+                  id="sender_message"
+                  name="sender_message"
+                  rows="3"
+                  required
+                ></textarea>
+                <div class="message_length">
+                  <p>
+                    <span id="message_length">0</span>
+                    / 20 characters
+                  </p>
                 </div>
               </div>
               <div class="form_button_container">

@@ -6,14 +6,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: greyscale;
 }
-*:focus-visible:not(.textarea_wrapper, .input_field, textarea) {
+*:focus-visible:not(.input_field, textarea) {
   outline-color: var(--grey-dark);
   outline-offset: var(--sp-1);
   outline-style: dashed;
   outline-width: 4px;
 }
 
-/* focus-within doesn't work so well with textareas, so I have to do a hack: first, I remove all focus properties from textarea (focus-visible, outline: none). Then (with a wrapper) I set an outline of that wrapper when the textarea is focused (active). */
+/* focus-within doesn't work so well with textareas, so I have to use focus-visible with textarea instead. */
 
 textarea:focus-visible {
   border-radius: var(--br-md);
@@ -21,8 +21,7 @@ textarea:focus-visible {
 }
 
 /* When focusing textareas and input fields I want the outline to be full and so that the outline border is a tad thicker than in its original state. I decided to keep it in the same area as the other focus-visible settings to keep it tidy. */
-.input_field:focus-within,
-.textarea_wrapper:focus-within {
+.input_field:focus-within {
   border-radius: var(--br-md);
   outline-style: solid;
   outline-width: 2px;
@@ -321,6 +320,19 @@ p {
   display: flex;
   flex-direction: column;
   gap: var(--sp-4);
+}
+
+.error_text {
+  display: hidden;
+  color: #dc3545;
+  font-size: var(--text-sm);
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.error_text_visible {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
 /* This is for setting even sizes for elements on certain sections, so I don't have to use grid. */
@@ -833,11 +845,7 @@ hr {
 }
 
 /* This wrapper is to set the size of the textarea, and is also used to get an outline when the textarea inside is active. This is set in the top of the styling, as textareas themselves doesn't work well with focus-within. */
-.textarea_wrapper {
-  width: 100%;
-  height: 100%;
-}
-.textarea_wrapper textarea {
+textarea {
   color: var(--black);
   font: var(--font-weight-base);
   font-size: var(--text-base);

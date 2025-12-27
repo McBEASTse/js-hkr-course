@@ -131,7 +131,7 @@ function validateMessage(input) {
   if (messageLength <= 19) {
     messageCounterColorError();
     showError(input, "Your message must be at least 20 characters long");
-  } else if (messageLength > 20) {
+  } else if (messageLength >= 20) {
     messageCounterColorClear();
     clearError(input);
   }
@@ -164,7 +164,7 @@ senderMessageInput.addEventListener("input", function () {
 });
 
 contactForm.addEventListener("reset", function () {
-  clearForm(contactForm);
+  clearForm();
 });
 
 // contactForm.addEventListener("submit", function (event) {

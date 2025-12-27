@@ -84,6 +84,7 @@ svg {
   --yellow-mid: #ffe38a;
   --yellow-dark: #ffd400;
   --underline-color: #2b00ff;
+  --green: #56c700;
   /* Gradients */
   --skill-gradient: linear-gradient(
     135deg,
@@ -322,17 +323,19 @@ p {
   gap: var(--sp-4);
 }
 
-.error_text {
-  display: hidden;
+.error_color {
   color: #dc3545;
-  font-size: var(--text-sm);
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
 }
 
-.error_text_visible {
+.error_message {
+  font-size: var(--text-sm);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.error_message_visible {
   opacity: 1;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 /* This is for setting even sizes for elements on certain sections, so I don't have to use grid. */
@@ -610,6 +613,14 @@ hr {
   .main_container {
     gap: var(--sp-16);
   }
+}
+
+.message_counter {
+  font-size: var(--text-sm);
+}
+
+.message_counter_clear {
+  color: green;
 }
 
 /* This is for keeping the navigation neat and tidy. */

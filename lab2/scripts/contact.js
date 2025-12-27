@@ -3,19 +3,25 @@ const firstNameInput = document.getElementById("first_name");
 const lastNameInput = document.getElementById("last_name");
 const emailInput = document.getElementById("email");
 const phoneNumberInput = document.getElementById("phone_number");
-const subjectInput = document.getElementById("subject");
 const senderMessageInput = document.getElementById("sender_message");
 const messageLengthCounter = document.getElementById("message_length");
+const clearAllInput = document.getElementById("clear_all");
+const inputElements = document.querySelectorAll("input, textarea");
 
 function clearError(input) {
   // First go to the parent element of the input element.
   const container = input.parentElement;
   // Create a variable for the selected element with class error_message.
-  let errorDisplay = container.querySelector(".error_text");
+  let errorDisplay = container.querySelector(".error_message");
 
-  // If there is a errorDispay, remove it.
+  // If there is a errorDisplay, remove it.
   if (errorDisplay) {
-    errorDisplay.remove();
+    errorDisplay.classList.remove("error_message_visible");
+
+    // Set a timeout (delay) so that the CSS transition can do its thing.
+    setTimeout(() => {
+      if (errorDisplay) errorDisplay.remove();
+    }, 500);
   }
 }
 
@@ -23,15 +29,31 @@ function showError(input, message) {
   // First, go to the parent element of the input element.
   const container = input.parentElement;
   // Create a variable for the selected element with class error_message.
-  let errorDisplay = container.querySelector(".error_text");
+  let errorDisplay = container.querySelector(".error_message");
   // If there is no errorDisplay variable, create a paragraph with class error_message.
   if (!errorDisplay) {
     errorDisplay = document.createElement("p");
-    errorDisplay.className = "error_text error_text_visible";
+    errorDisplay.className = "error_message error_color";
     container.appendChild(errorDisplay);
+
+    setTimeout(() => {
+      errorDisplay.classList.add("error_message_visible");
+    }, 1);
   }
+
   // Show the passed error message.
   errorDisplay.textContent = message;
+}
+
+function clearForm() {
+  contactForm.reset();
+
+  inputElements.forEach((input) => {
+    clearError(input);
+  });
+
+  messageCounterColorReset();
+  messageLengthCounter.innerText = "0";
 }
 
 function validateName(input) {
@@ -81,16 +103,37 @@ function validatePhoneNumber(input) {
   }
 }
 
+function messageCounterColorReset() {
+  const container = messageLengthCounter.parentElement;
+
+  container.classList.remove("error_color");
+  container.classList.remove("message_counter_clear");
+}
+
+function messageCounterColorError() {
+  const container = messageLengthCounter.parentElement;
+
+  container.classList.add("error_color");
+  container.classList.remove("message_counter_clear");
+}
+
+function messageCounterColorClear() {
+  const container = messageLengthCounter.parentElement;
+
+  container.classList.remove("error_color");
+  container.classList.add("message_counter_clear");
+}
+
 // This basically works the same as the other functions.
 function validateMessage(input) {
   const messageLength = input.value.trim().length;
 
-  if (messageLength === 0) {
-    console.log("Message field is empty");
-  } else if (messageLength <= 19) {
-    console.log("Message is too short");
-  } else {
-    console.log("Message is OK");
+  if (messageLength <= 19) {
+    messageCounterColorError();
+    showError(input, "Your message must be at least 20 characters long");
+  } else if (messageLength > 20) {
+    messageCounterColorClear();
+    clearError(input);
   }
   messageLengthCounter.innerText = messageLength;
 }
@@ -118,6 +161,10 @@ phoneNumberInput.addEventListener("input", function () {
 // Here we call the validateMessage() to check if the message is long enough.
 senderMessageInput.addEventListener("input", function () {
   validateMessage(senderMessageInput);
+});
+
+contactForm.addEventListener("reset", function () {
+  clearForm(contactForm);
 });
 
 // contactForm.addEventListener("submit", function (event) {

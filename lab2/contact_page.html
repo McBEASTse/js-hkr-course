@@ -123,15 +123,19 @@
                   rows="3"
                   required
                 ></textarea>
-                <div class="message_length">
-                  <p>
+                <div>
+                  <p class="message_counter">
                     <span id="message_length">0</span>
                     / 20 characters
                   </p>
                 </div>
               </div>
               <div class="form_button_container">
-                <button class="large_button secondary_button" type="reset">
+                <button
+                  class="large_button secondary_button"
+                  id="clear_all"
+                  type="reset"
+                >
                   Reset
                 </button>
                 <button class="large_button main_button" type="submit">

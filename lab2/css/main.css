@@ -85,7 +85,7 @@ svg {
   --yellow-light: #fff8e3;
   --yellow-mid: #ffe38a;
   --yellow-dark: #ffd400;
-  --underline-color: #2b00ff;
+  --blue: #2b00ff;
   /* Gradients */
   --skill-gradient: linear-gradient(
     135deg,
@@ -171,8 +171,10 @@ svg {
   --max-width-page: 1440px;
   /* Borders. I know I'm just using one in this project, but this gives me flexibility to add more borders. */
   --border-black: 2px solid var(--black);
+  --border-blue: 2px solid var(--blue);
   --border-green: 2px solid var(--validated-color);
   --border-red: 2px solid var(--error-color);
+
   /* Breakpoints for when @media queries should apply. */
   --bp-xs: 26rem;
   --bp-sm: 40rem;
@@ -510,6 +512,9 @@ hr {
   border-radius: var(--br-md);
   font-size: var(--text-base);
   padding: var(--sp-2);
+}
+.input_field:focus {
+  border: var(--border-blue);
 }
 
 .input_field_error {
@@ -883,7 +888,7 @@ textarea {
 /* Lousy hack to set hyperlink-styling as I want. */
 .url {
   color: var(--primary-font-color);
-  text-decoration-color: var(--underline-color);
+  text-decoration-color: var(--blue);
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-thickness: 4px;

@@ -39,6 +39,9 @@ function showError(input, message) {
     setTimeout(() => {
       errorDisplay.classList.add("error_message_visible");
     }, 1);
+
+    // Run the function validateInputField with the status "error" to change the color of the border of the input element to red.
+    validateInputField(input, "error");
   }
 
   // Show the passed error message.
@@ -48,11 +51,14 @@ function showError(input, message) {
 function clearForm() {
   contactForm.reset();
 
+  // For each input element (input and textarea), clear the errors and make the input fields neutral (base border color).
   inputElements.forEach((input) => {
     clearError(input);
+    validateInputField(input);
   });
 
-  messageCounterColorReset();
+  // Clear the formatting of the character counter and set the inner text of the message length element to zero.
+  messageCounterColor();
   messageLengthCounter.innerText = "0";
 }
 
@@ -66,9 +72,10 @@ function validateName(input) {
   if (nameValue === "") {
     showError(input, "Name can not be empty");
     // Then we test the input, nameValue, with the regular expression that we created.
-    // If there are no other symbols than in the regex, the statement is true and we clear the error.
+    // If there are no other symbols than in the regex, the statement is true and we clear the error and use validateInputField to change the color of the border of the element to green.
   } else if (validateLetter.test(nameValue)) {
     clearError(input);
+    validateInputField(input, "valid");
   } else {
     // If there is anything else than what we put in to the regex, we get an error.
     showError(input, "Name can only contain letters");
@@ -84,6 +91,7 @@ function validateEmail(input) {
     showError(input, "Email can not be empty");
   } else if (validateInput.test(emailValue)) {
     clearError(input);
+    validateInputField(input, "valid");
   } else {
     showError(input, "Email is not valid");
   }
@@ -96,32 +104,41 @@ function validatePhoneNumber(input) {
 
   if (phoneNumberValue === "") {
     clearError(input);
+    validateInputField(input);
   } else if (validateInput.test(phoneNumberValue)) {
     clearError(input);
+    validateInputField(input, "valid");
   } else {
     showError(input, "Phone number is not valid");
   }
 }
 
-function messageCounterColorReset() {
-  const container = messageLengthCounter.parentElement;
+function validateInputField(input, state) {
+  input.classList.remove(
+    "input_field_neutral",
+    "input_field_validated",
+    "input_field_error",
+  );
 
-  container.classList.remove("error_color");
-  container.classList.remove("message_counter_clear");
+  if (state === "valid") {
+    input.classList.add("input_field_validated");
+  } else if (state === "error") {
+    input.classList.add("input_field_error");
+  } else {
+    input.classList.add("input_field_neutral");
+  }
 }
 
-function messageCounterColorError() {
+// These functions changes the color of the character counter, and also works when the whole form is reset.
+function messageCounterColor(state) {
   const container = messageLengthCounter.parentElement;
+  container.classList.remove("error_color", "message_counter_valid");
 
-  container.classList.add("error_color");
-  container.classList.remove("message_counter_clear");
-}
-
-function messageCounterColorClear() {
-  const container = messageLengthCounter.parentElement;
-
-  container.classList.remove("error_color");
-  container.classList.add("message_counter_clear");
+  if (state === "valid") {
+    container.classList.add("message_counter_valid");
+  } else if (state === "error") {
+    container.classList.add("error_color");
+  }
 }
 
 // This basically works the same as the other functions.
@@ -129,11 +146,12 @@ function validateMessage(input) {
   const messageLength = input.value.trim().length;
 
   if (messageLength <= 19) {
-    messageCounterColorError();
+    messageCounterColor("error");
     showError(input, "Your message must be at least 20 characters long");
   } else if (messageLength >= 20) {
-    messageCounterColorClear();
+    messageCounterColor("valid");
     clearError(input);
+    validateInputField(input, "valid");
   }
   messageLengthCounter.innerText = messageLength;
 }

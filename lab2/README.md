@@ -1,6 +1,7 @@
 # Lab 2 - Interactive Portfolio Enhancement with Git Workflow
 
 This is a simple web page with some simple JavaScript. It's an assignment for a course in JavaScript, so nothing fancy.
+And I also stored all my lectures here and I'm to lazy to remove them and create another repo for just them so... you're welcome?
 
 ## Why?
 
@@ -8,7 +9,12 @@ Because I want to learn JavaScript, and also have some kind of confirmation that
 
 ## How to run it
 
-Just download the repo, unpack it to any directory, and open the index.html file in some browser. If you don't know how to do this, I'm sorry.
+Just download the repo, unpack it to any directory, and open the lab2/index.html file in some browser. If you don't know how to do this, I'm sorry.
+And ignore the lectures/ and lab1/ for now.
+
+## Documentation?
+
+I used a different branch, lab-2-contact-form, for this assignment. So check there for a more focused timeline of this lab.
 
 ## It this the best you got?
 
@@ -20,4 +26,4 @@ As this is the second lab of two, I have to finish up the first lab. So there ar
 
 ## Any last words?
 
-Yes. Two.
+Yes. Three actually.

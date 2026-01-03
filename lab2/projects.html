@@ -30,7 +30,6 @@
             </li>
             <li><a href="projects.html" target="_top">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="contact_page.html">Contact page</a></li>
             <li><a href="#contact_form">Contact</a></li>
           </ul>
         </nav>
@@ -174,45 +173,106 @@
           </div>
           <div class="flex_even skill_contact_sections" id="contact_form">
             <h2>Contact form</h2>
-            <form class="column_listing" action="/submit-form" method="POST">
-              <div class="form_container flex_even">
-                <label class="textarea_label" for="name">Your name</label>
-                <input
-                  class="input_field input_field_information"
-                  type="text"
-                  id="name"
-                  name="senders_name"
-                  required
-                />
+            <form class="column_listing" id="contact_form">
+              <div class="form_name_container">
+                <div class="form_container flex_even">
+                  <label class="textarea_label" for="first_name">
+                    First Name (required)
+                  </label>
+                  <input
+                    class="input_field input_field_information input_field_neutral"
+                    type="text"
+                    id="first_name"
+                    name="first_name"
+                    novalidation
+                  />
+                </div>
+                <div class="form_container flex_even">
+                  <label class="textarea_label" for="last_name">
+                    Last Name (required)
+                  </label>
+                  <input
+                    class="input_field input_field_information input_field_neutral"
+                    type="text"
+                    id="last_name"
+                    name="last_name"
+                    novalidation
+                  />
+                </div>
               </div>
-              <div class="form_container flex_even">
-                <label class="textarea_label" for="email">Your email</label>
+              <div class="form_container">
+                <label class="textarea_label" for="email">
+                  Your email (required)
+                </label>
                 <input
-                  class="input_field input_field_information"
+                  class="input_field input_field_information input_field_neutral"
                   type="email"
                   id="email"
                   name="senders_email"
-                  required
+                  novalidation
                 />
               </div>
-              <div class="form_container flex_even">
+              <div class="form_container">
+                <label class="textarea_label" for="phone_number">
+                  Phone number (optional)
+                </label>
+                <input
+                  class="input_field input_field_information input_field_neutral"
+                  type="tel"
+                  id="phone_number"
+                  name="senders_phone_number"
+                  novalidation
+                />
+              </div>
+              <div class="form_container">
+                <label class="textarea_label" for="subject">
+                  What is this about
+                </label>
+                <select
+                  class="input_field input_field_information input_field_neutral"
+                  name="subject"
+                  id="subject"
+                  novalidation
+                >
+                  <option value="get_information">Information</option>
+                  <option value="give_information">
+                    Give us more information
+                  </option>
+                  <option value="work_opportunity">We want to hire you</option>
+                </select>
+              </div>
+              <div class="form_container">
                 <label class="textarea_label" for="sender_message">
-                  What you want
+                  What is your message (required)
                 </label>
                 <textarea
-                  class="input_field"
+                  class="input_field input_field_neutral"
                   id="sender_message"
                   name="sender_message"
                   rows="3"
-                  required
+                  novalidation
                 ></textarea>
+                <div>
+                  <p class="message_counter">
+                    <span id="message_length">0</span>
+                    / 20 characters
+                  </p>
+                </div>
+              </div>
+              <div id="form_feedback"></div>
+              <div class="form_button_container">
+                <button
+                  class="large_button secondary_button"
+                  id="clear_all"
+                  type="reset"
+                >
+                  Reset
+                </button>
+                <button class="large_button main_button" type="submit">
+                  Send message
+                </button>
               </div>
             </form>
-            <div class="form_button_container">
-              <button class="large_button main_button" type="submit">
-                Send message
-              </button>
-            </div>
           </div>
         </div>
       </section>
@@ -296,5 +356,6 @@
         </div>
       </section>
     </footer>
+    <script src="scripts/contact.js"></script>
   </body>
 </html>

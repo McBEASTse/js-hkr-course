@@ -222,7 +222,6 @@ contactForm.addEventListener("submit", function (event) {
   });
 
   if (formValidated) {
-    clearForm();
     formFeedback.innerHTML = `<div class="message_send_base message_send_valid"><p>Thank you ${firstNameInput.value} ${lastNameInput.value}! I will get back to you as soon as possible.</p></div>`;
     setTimeout(() => {
       formFeedback.firstElementChild.classList.add("message_send_visible");
@@ -233,16 +232,17 @@ contactForm.addEventListener("submit", function (event) {
     setTimeout(() => {
       formFeedback.innerHTML = ``;
     }, 3000);
+    clearForm();
   } else {
-    formFeedback.innerHTML = `<div class="message_send_base message_send_error"><p>There seems to be some fields that needs fixing before you can send your message!</p></div>`;
+    formFeedback.innerHTML = `<div class="message_send_base message_send_error"><p>There seems to be some errors that needs fixing before you can send your message!</p></div>`;
     setTimeout(() => {
       formFeedback.firstElementChild.classList.add("message_send_visible");
     }, 1);
-    // setTimeout(() => {
-    //   formFeedback.firstElementChild.classList.remove("message_send_visible");
-    // }, 2500);
-    // setTimeout(() => {
-    //   formFeedback.innerHTML = ``;
-    // }, 3000);
+    setTimeout(() => {
+      formFeedback.firstElementChild.classList.remove("message_send_visible");
+    }, 2500);
+    setTimeout(() => {
+      formFeedback.innerHTML = ``;
+    }, 3000);
   }
 });

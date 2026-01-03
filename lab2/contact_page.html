@@ -44,7 +44,7 @@
       </section>
       <section class="section_container">
         <div class="section_base standard_section">
-          <div class="large_contact_form">
+          <div class="large_contact_form" id="contact_form_container">
             <form class="column_listing" id="contact_form">
               <div class="form_name_container">
                 <div class="form_container flex_even">
@@ -56,7 +56,7 @@
                     type="text"
                     id="first_name"
                     name="first_name"
-                    required
+                    novalidation
                   />
                 </div>
                 <div class="form_container flex_even">
@@ -68,7 +68,7 @@
                     type="text"
                     id="last_name"
                     name="last_name"
-                    required
+                    novalidation
                   />
                 </div>
               </div>
@@ -81,7 +81,7 @@
                   type="email"
                   id="email"
                   name="senders_email"
-                  required
+                  novalidation
                 />
               </div>
               <div class="form_container">
@@ -103,7 +103,7 @@
                   class="input_field input_field_information input_field_neutral"
                   name="subject"
                   id="subject"
-                  required
+                  novalidation
                 >
                   <option value="get_information">Information</option>
                   <option value="give_information">
@@ -121,7 +121,7 @@
                   id="sender_message"
                   name="sender_message"
                   rows="3"
-                  required
+                  novalidation
                 ></textarea>
                 <div>
                   <p class="message_counter">
@@ -130,6 +130,7 @@
                   </p>
                 </div>
               </div>
+              <div id="form_feedback"></div>
               <div class="form_button_container">
                 <button
                   class="large_button secondary_button"
@@ -141,7 +142,6 @@
                 <button class="large_button main_button" type="submit">
                   Send message
                 </button>
-                <div id="updatedDiv"></div>
               </div>
             </form>
           </div>

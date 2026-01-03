@@ -642,6 +642,33 @@ hr {
   color: var(--validated-color);
 }
 
+.message_send_base {
+  align-content: center;
+  border-radius: var(--br-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  padding: var(--sp-4);
+  transition: opacity 0.5s ease-in-out;
+}
+.message_send_visible {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+.message_send_base p {
+  font-size: var(--text-sm);
+}
+
+.message_send_error {
+  background: red;
+  border: var(--border-black);
+}
+.message_send_valid {
+  background: green;
+  border: var(--border-black);
+}
+
 /* This is for keeping the navigation neat and tidy. */
 .navigation_buttons {
   display: flex;

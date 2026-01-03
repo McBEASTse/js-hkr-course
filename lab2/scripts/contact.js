@@ -7,6 +7,7 @@ const senderMessageInput = document.getElementById("sender_message");
 const messageLengthCounter = document.getElementById("message_length");
 const clearAllInput = document.getElementById("clear_all");
 const inputElements = document.querySelectorAll("input, textarea");
+const formFeedback = document.getElementById("form_feedback");
 
 function clearError(input) {
   // First go to the parent element of the input element.
@@ -62,6 +63,25 @@ function clearForm() {
   messageLengthCounter.innerText = "0";
 }
 
+function validateInputField(input, state) {
+  input.classList.remove(
+    "input_field_neutral",
+    "input_field_validated",
+    "input_field_error",
+  );
+
+  if (state === "valid") {
+    input.classList.add("input_field_validated");
+    return true;
+  } else if (state === "error") {
+    input.classList.add("input_field_error");
+    return false;
+  } else {
+    input.classList.add("input_field_neutral");
+    return false;
+  }
+}
+
 function validateName(input) {
   // First, trim the input from spaces (so that the input field can not be empty with just spaces). If the input has spaces before a name, the input is still valid (as the spaces are trimmed).
   const nameValue = input.value.trim();
@@ -70,15 +90,15 @@ function validateName(input) {
 
   // First we check if the input field is empty. If it is, we get an error.
   if (nameValue === "") {
-    showError(input, "Name can not be empty");
+    return showError(input, "Name can not be empty");
     // Then we test the input, nameValue, with the regular expression that we created.
     // If there are no other symbols than in the regex, the statement is true and we clear the error and use validateInputField to change the color of the border of the element to green.
   } else if (validateLetter.test(nameValue)) {
     clearError(input);
-    validateInputField(input, "valid");
+    return validateInputField(input, "valid");
   } else {
     // If there is anything else than what we put in to the regex, we get an error.
-    showError(input, "Name can only contain letters");
+    return showError(input, "Name can only contain letters");
   }
 }
 
@@ -88,12 +108,12 @@ function validateEmail(input) {
   const validateInput = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (emailValue === "") {
-    showError(input, "Email can not be empty");
+    return showError(input, "Email can not be empty");
   } else if (validateInput.test(emailValue)) {
     clearError(input);
-    validateInputField(input, "valid");
+    return validateInputField(input, "valid");
   } else {
-    showError(input, "Email is not valid");
+    return showError(input, "Email is not valid");
   }
 }
 
@@ -105,27 +125,12 @@ function validatePhoneNumber(input) {
   if (phoneNumberValue === "") {
     clearError(input);
     validateInputField(input);
+    return true;
   } else if (validateInput.test(phoneNumberValue)) {
     clearError(input);
-    validateInputField(input, "valid");
+    return validateInputField(input, "valid");
   } else {
-    showError(input, "Phone number is not valid");
-  }
-}
-
-function validateInputField(input, state) {
-  input.classList.remove(
-    "input_field_neutral",
-    "input_field_validated",
-    "input_field_error",
-  );
-
-  if (state === "valid") {
-    input.classList.add("input_field_validated");
-  } else if (state === "error") {
-    input.classList.add("input_field_error");
-  } else {
-    input.classList.add("input_field_neutral");
+    return showError(input, "Phone number is not valid");
   }
 }
 
@@ -144,16 +149,37 @@ function messageCounterColor(state) {
 // This basically works the same as the other functions.
 function validateMessage(input) {
   const messageLength = input.value.trim().length;
+  messageLengthCounter.innerText = messageLength;
 
   if (messageLength <= 19) {
     messageCounterColor("error");
-    showError(input, "Your message must be at least 20 characters long");
+    return showError(input, "Your message must be at least 20 characters long");
   } else if (messageLength >= 20) {
     messageCounterColor("valid");
     clearError(input);
-    validateInputField(input, "valid");
+    return validateInputField(input, "valid");
   }
-  messageLengthCounter.innerText = messageLength;
+}
+
+function validateForm(input) {
+  switch (input.id) {
+    case "first_name":
+    case "last_name":
+      return validateName(input);
+
+    case "email":
+      return validateEmail(input);
+
+    case "phone_number":
+      return validatePhoneNumber(input);
+
+    case "sender_message":
+      return validateMessage(input);
+
+    // As we don't validate the dropdown, we just return all defaults as true.
+    default:
+      return true;
+  }
 }
 
 // Here we check the input field for the first name.
@@ -185,15 +211,38 @@ contactForm.addEventListener("reset", function () {
   clearForm();
 });
 
-// contactForm.addEventListener("submit", function (event) {
-//   event.preventDefault();
-//
-//   if (requiredField.value.trim() === "") {
-//     updatedDiv.textContent = "That shit was empty";
-//     console.log("Form NOT submitted.");
-//   } else {
-//     contactForm.submit();
-//     updatedDiv.textContent = "That shit was sent";
-//     console.log("Form submitted.");
-//   }
-// });
+contactForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  let formValidated = true;
+
+  inputElements.forEach((input) => {
+    if (!validateForm(input)) {
+      formValidated = false;
+    }
+  });
+
+  if (formValidated) {
+    clearForm();
+    formFeedback.innerHTML = `<div class="message_send_base message_send_valid"><p>Thank you ${firstNameInput.value} ${lastNameInput.value}! I will get back to you as soon as possible.</p></div>`;
+    setTimeout(() => {
+      formFeedback.firstElementChild.classList.add("message_send_visible");
+    }, 1);
+    setTimeout(() => {
+      formFeedback.firstElementChild.classList.remove("message_send_visible");
+    }, 2500);
+    setTimeout(() => {
+      formFeedback.innerHTML = ``;
+    }, 3000);
+  } else {
+    formFeedback.innerHTML = `<div class="message_send_base message_send_error"><p>There seems to be some fields that needs fixing before you can send your message!</p></div>`;
+    setTimeout(() => {
+      formFeedback.firstElementChild.classList.add("message_send_visible");
+    }, 1);
+    // setTimeout(() => {
+    //   formFeedback.firstElementChild.classList.remove("message_send_visible");
+    // }, 2500);
+    // setTimeout(() => {
+    //   formFeedback.innerHTML = ``;
+    // }, 3000);
+  }
+});

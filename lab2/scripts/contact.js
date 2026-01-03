@@ -39,7 +39,7 @@ function showError(input, message) {
 
     setTimeout(() => {
       errorDisplay.classList.add("error_message_visible");
-    }, 1);
+    }, 0);
 
     // Run the function validateInputField with the status "error" to change the color of the border of the input element to red.
     validateInputField(input, "error");
@@ -63,7 +63,9 @@ function clearForm() {
   messageLengthCounter.innerText = "0";
 }
 
+// Here each input field is validated with styling and return boolean if the input is valid, invalid or is neutral (no content).
 function validateInputField(input, state) {
+  // First, clear all the styling.
   input.classList.remove(
     "input_field_neutral",
     "input_field_validated",
@@ -73,6 +75,7 @@ function validateInputField(input, state) {
   if (state === "valid") {
     input.classList.add("input_field_validated");
     return true;
+    // The returned state is used in validateForm(), which is called when the form is submitted: if everything is valid (true), the form is sent. If the form is invalid (false), the user gets an error message and the error for that input field is shown (if for some reason the error is not showing in previous state).
   } else if (state === "error") {
     input.classList.add("input_field_error");
     return false;
@@ -125,6 +128,7 @@ function validatePhoneNumber(input) {
   if (phoneNumberValue === "") {
     clearError(input);
     validateInputField(input);
+    // This return true is special for this function, as the input field for the phone number can be empty. No need to make a special case for this in previous function.
     return true;
   } else if (validateInput.test(phoneNumberValue)) {
     clearError(input);
@@ -161,11 +165,13 @@ function validateMessage(input) {
   }
 }
 
+// Here we validate each input field from earlier with a switch statements instead of using if statements, as the switch statements is easier to read.
 function validateForm(input) {
   switch (input.id) {
     case "first_name":
     case "last_name":
       return validateName(input);
+    // The returned value is checked when the form is submitted.
 
     case "email":
       return validateEmail(input);
@@ -213,36 +219,34 @@ contactForm.addEventListener("reset", function () {
 
 contactForm.addEventListener("submit", function (event) {
   event.preventDefault();
+  // We assume that all input fields are valid until they are not.
   let formValidated = true;
 
+  // Here we check each input field if they are valid. If any of them is not, the form is not valid.
   inputElements.forEach((input) => {
     if (!validateForm(input)) {
       formValidated = false;
     }
   });
 
+  // I chose to add the HTML for validation/error message as a string as it just felt easier in this case.
   if (formValidated) {
     formFeedback.innerHTML = `<div class="message_send_base message_send_valid"><p>Thank you ${firstNameInput.value} ${lastNameInput.value}! I will get back to you as soon as possible.</p></div>`;
-    setTimeout(() => {
-      formFeedback.firstElementChild.classList.add("message_send_visible");
-    }, 1);
-    setTimeout(() => {
-      formFeedback.firstElementChild.classList.remove("message_send_visible");
-    }, 2500);
-    setTimeout(() => {
-      formFeedback.innerHTML = ``;
-    }, 3000);
     clearForm();
   } else {
     formFeedback.innerHTML = `<div class="message_send_base message_send_error"><p>There seems to be some errors that needs fixing before you can send your message!</p></div>`;
+  }
+  // Here I nested the timeouts so they run in order instead of risking that they interupt each other.
+  setTimeout(() => {
     setTimeout(() => {
-      formFeedback.firstElementChild.classList.add("message_send_visible");
-    }, 1);
-    setTimeout(() => {
+      setTimeout(() => {
+        // Remove the validation/error message.
+        formFeedback.innerHTML = ``;
+      }, 500);
+      // Remove the opacity so it fades out.
       formFeedback.firstElementChild.classList.remove("message_send_visible");
     }, 2500);
-    setTimeout(() => {
-      formFeedback.innerHTML = ``;
-    }, 3000);
-  }
+    // Add the opacity to the element so it fades in.
+    formFeedback.firstElementChild.classList.add("message_send_visible");
+  });
 });

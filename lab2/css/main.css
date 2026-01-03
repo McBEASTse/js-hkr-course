@@ -636,14 +636,13 @@ hr {
   }
 }
 
+/* These are for the contact form */
 .message_counter {
   font-size: var(--text-sm);
 }
-
 .message_counter_valid {
   color: var(--validated-color);
 }
-
 .message_send_base {
   align-content: center;
   border-radius: var(--br-md);

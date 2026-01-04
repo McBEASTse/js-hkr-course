@@ -2,8 +2,6 @@
 
 This is a simple web page with some simple JavaScript. It's an assignment for a course in JavaScript, so nothing fancy. Personally I would not rate my own skills in any way, and there is still work to be done regarding UX and the design.
 
-And I also stored all my lectures here and I'm to lazy to remove them and create another repo for just them so... you're welcome?
-
 ## How to run it
 
 As it's just a static web page, you only need to download the repo, extract it to desired directory and open up index.html in your prefered browser. If you want, you can use LiveServer for real time updates if you want to change anything.

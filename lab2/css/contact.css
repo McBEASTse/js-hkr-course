@@ -1,0 +1,189 @@
+/* focus-within doesn't work so well with textareas, so I have to use focus-visible with textarea instead. */
+
+textarea:focus-visible {
+  border-radius: var(--br-md);
+  outline: none;
+}
+
+/* When focusing textareas and input fields I want the outline to be full and so that the outline border is a tad thicker than in its original state. I decided to keep it in the same area as the other focus-visible settings to keep it tidy. */
+.input_field:focus-within {
+  outline-color: var(--black);
+  border-radius: var(--br-md);
+  outline-style: solid;
+  outline-width: 2px;
+}
+
+.error_color {
+  color: var(--error-color);
+}
+
+.error_message {
+  font-size: var(--text-sm);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.error_message_visible {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* For small things like this, Tailwind seems like a better option, or doing a home-made hybrid (which I've tried and it works great until you need to do some @media queries, then it's a nightmare to use). */
+.form_container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-0_5);
+}
+
+.form_name_container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+@media screen and (min-width: 64rem) {
+  .form_name_container {
+    flex-direction: row;
+    gap: var(--sp-4);
+  }
+}
+
+.form_button_container {
+  display: flex;
+  flex-direction: row;
+  gap: var(--sp-4);
+  justify-content: end;
+}
+.input_field {
+  background: white;
+  border-radius: var(--br-md);
+  font-size: var(--text-base);
+  padding: var(--sp-2);
+}
+.input_field:focus {
+  border: var(--border-blue);
+}
+
+.input_field_error {
+  border: var(--border-red);
+}
+
+// Yes, the input field should be grey, but as I have a grey background I found it to be better UX using a black border instead of gray on gray. Otherwhise I need to change the background and find another appropriate color that works with other elements.
+.input_field_neutral {
+  border: var(--border-black);
+}
+
+.input_field_validated {
+  border: var(--border-green);
+}
+
+/* As mentioned before, I understand the need for Tailwind sometimes... */
+.input_field_information {
+  max-width: 48ch;
+}
+
+/* So much styling for just one button...! */
+.large_button {
+  align-items: center;
+  border: var(--border-black);
+  border-radius: var(--br-full);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--primary-font);
+  font-size: var(--text-base);
+  font-weight: var(--text-weight-bold);
+  height: 4rem;
+  justify-content: center;
+  max-width: fit-content;
+  min-width: 6.25rem;
+  padding: var(--sp-4) var(--sp-8);
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+}
+.large_button.main_button {
+  background: var(--black);
+  color: var(--white);
+}
+.large_button.main_button:hover {
+  background: var(--grey-dark);
+}
+.large_button.main_button:active {
+  background: var(--grey-mid);
+}
+.large_button.secondary_button {
+  background: var(--white);
+  color: var(--black);
+}
+.large_button.secondary_button:hover {
+  background: var(--grey-mid-light);
+}
+.large_button.secondary_button:active {
+  background: var(--grey-light);
+}
+@media screen and (max-width: 64rem) {
+  .large_button svg {
+    font-size: var(--text-lg);
+    max-height: 24px;
+    max-width: 24px;
+  }
+}
+
+.large_contact_form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  max-width: 48rem;
+  width: 100%;
+}
+
+/* These are for the contact form */
+.message_counter {
+  font-size: var(--text-sm);
+}
+.message_counter_valid {
+  color: var(--validated-color);
+}
+.message_send_base {
+  align-content: center;
+  border-radius: var(--br-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  padding: var(--sp-4);
+  transition: opacity 0.5s ease-in-out;
+}
+.message_send_base > p {
+  font-size: var(--text-sm);
+  max-width: none;
+}
+.message_send_visible {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+.message_send_error {
+  background: var(--error-color-background);
+  border: var(--border-red);
+}
+.message_send_valid {
+  background: var(--validated-color-background);
+  border: var(--border-green);
+}
+
+.textarea_label {
+  color: var(--black);
+  font-size: var(--text-base);
+  font-weight: var(--text-weight-bold);
+  max-width: max-content;
+}
+
+/* This wrapper is to set the size of the textarea, and is also used to get an outline when the textarea inside is active. This is set in the top of the styling, as textareas themselves doesn't work well with focus-within. */
+textarea {
+  color: var(--black);
+  font: var(--font-weight-base);
+  font-size: var(--text-base);
+  height: 100%;
+  min-height: 10rem;
+  resize: none;
+  width: 100%;
+}

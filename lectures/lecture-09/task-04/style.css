@@ -1,0 +1,10 @@
+body {
+  color: white;
+  background: black;
+}
+
+#hoverText {
+  color: Red;
+  font-size: 5rem;
+  max-width: max-content;
+}

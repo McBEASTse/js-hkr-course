@@ -1,24 +1,21 @@
 # Lab 2 - Interactive Portfolio Enhancement with Git Workflow
 
-This is a simple web page with some simple JavaScript. It's an assignment for a course in JavaScript, so nothing fancy.
+This is a simple web page with some simple JavaScript. It's an assignment for a course in JavaScript, so nothing fancy. Personally I would not rate my own skills in any way, and there is still work to be done regarding UX and the design.
+
 And I also stored all my lectures here and I'm to lazy to remove them and create another repo for just them so... you're welcome?
-
-## Why?
-
-Because I want to learn JavaScript, and also have some kind of confirmation that I actually have some basic knowledge instead of just saying "I watched some tutorials on YouTube".
 
 ## How to run it
 
-Just download the repo, unpack it to any directory, and open the lab2/index.html file in some browser. If you don't know how to do this, I'm sorry.
-And ignore the lectures/ and lab1/ for now.
+As it's just a static web page, you only need to download the repo, extract it to desired directory and open up index.html in your prefered browser. If you want, you can use LiveServer for real time updates if you want to change anything.
 
-## Documentation?
+## What's not implemented
 
-I used a different branch, lab-2-contact-form, for this assignment. So check there for a more focused timeline of this lab.
+- Being able to send messages. As it is now, it just checks if the contact form is valid or not, and if it's valid, the form resets.
+- The menu should be a compact click-out-menu when on smaller screens; using a "regular" desktop menu on mobile devices is just bad design. For this I need to create a script that can hide and display the menu on click, but this was not in the assignment.
 
-## It this the best you got?
+## Documentation
 
-Not really, but working a full time job and having two small kids and studying during the holiday season is kind of a struggle. I would want to do the Grade 4 assignment, but I'll just do it on my spare time instead so I can learn arrays also.
+I used a different branch, lab-2-contact-form, for this assignment. So check there for a more focused timeline of this lab. Regarding comments, most comments are self explanatory and mostly notes for myself.
 
 ## Now what?
 

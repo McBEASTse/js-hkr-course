@@ -67,9 +67,8 @@ textarea:focus-visible {
   border: var(--border-red);
 }
 
-// Yes, the input field should be grey, but as I have a grey background I found it to be better UX using a black border instead of gray on gray. Otherwhise I need to change the background and find another appropriate color that works with other elements.
 .input_field_neutral {
-  border: var(--border-black);
+  border: var(--border-grey);
 }
 
 .input_field_validated {

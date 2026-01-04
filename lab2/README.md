@@ -17,6 +17,12 @@ As it's just a static web page, you only need to download the repo, extract it t
 
 I used a different branch, lab-2-contact-form, for this assignment. So check there for a more focused timeline of this lab. Regarding comments, most comments are self explanatory and mostly notes for myself.
 
+## Was genAI used for this?
+
+Yes, but not giving me any code, but rather I explained what I wanted to do and giving examples of how I thought things would be solved, and gave the genAI instructions to do Socratic teaching as to not give me the answer directly but help me understand how to solve the problem myself.
+
+So every line and all code written is done by me, but with genAI as a guide and helping me with best practices.
+
 ## Now what?
 
 As this is the second lab of two, I have to finish up the first lab. So there are some WCAG code missing in the HTML, such as aria labels, and I will write a report and hopefully have some screenshots of the process that I can share.

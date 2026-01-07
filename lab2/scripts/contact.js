@@ -5,9 +5,9 @@ const emailInput = document.getElementById("email");
 const phoneNumberInput = document.getElementById("phone_number");
 const senderMessageInput = document.getElementById("sender_message");
 const messageLengthCounter = document.getElementById("message_length");
-const clearAllInput = document.getElementById("clear_all");
 const inputElements = document.querySelectorAll("input, textarea");
 const formFeedback = document.getElementById("form_feedback");
+// const clearAllInput = document.getElementById("clear_all"); -- Here's a variable I missed that it is not used. It was from an earlier itteration when I tested how to reset the form, and it targets the id of the reset button.
 
 function clearError(input) {
   // First go to the parent element of the input element.
@@ -51,7 +51,6 @@ function showError(input, message) {
 
 function clearForm() {
   contactForm.reset();
-
   // For each input element (input and textarea), clear the errors and make the input fields neutral (base border color).
   inputElements.forEach((input) => {
     clearError(input);
@@ -138,6 +137,21 @@ function validatePhoneNumber(input) {
   }
 }
 
+// This basically works the same as the other functions.
+function validateMessage(input) {
+  const messageLength = input.value.trim().length;
+  messageLengthCounter.innerText = messageLength;
+
+  if (messageLength <= 19) {
+    messageCounterColor("error");
+    return showError(input, "Your message must be at least 20 characters long");
+  } else if (messageLength >= 30) {
+    messageCounterColor("valid");
+    clearError(input);
+    return validateInputField(input, "valid");
+  }
+}
+
 // These functions changes the color of the character counter, and also works when the whole form is reset.
 function messageCounterColor(state) {
   const container = messageLengthCounter.parentElement;
@@ -147,21 +161,6 @@ function messageCounterColor(state) {
     container.classList.add("message_counter_valid");
   } else if (state === "error") {
     container.classList.add("error_color");
-  }
-}
-
-// This basically works the same as the other functions.
-function validateMessage(input) {
-  const messageLength = input.value.trim().length;
-  messageLengthCounter.innerText = messageLength;
-
-  if (messageLength <= 19) {
-    messageCounterColor("error");
-    return showError(input, "Your message must be at least 20 characters long");
-  } else if (messageLength >= 20) {
-    messageCounterColor("valid");
-    clearError(input);
-    return validateInputField(input, "valid");
   }
 }
 

@@ -1,5 +1,4 @@
 /* focus-within doesn't work so well with textareas, so I have to use focus-visible with textarea instead. */
-
 textarea:focus-visible {
   border-radius: var(--br-md);
   outline: none;

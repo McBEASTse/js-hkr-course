@@ -144,7 +144,7 @@ function validateMessage(input) {
 
   if (messageLength <= 19) {
     messageCounterColor("error");
-    return showError(input, "Your message must be at least 20 characters long");
+    return showError(input, "Your message must be at least 30 characters long");
   } else if (messageLength >= 30) {
     messageCounterColor("valid");
     clearError(input);
